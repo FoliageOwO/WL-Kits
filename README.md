@@ -13,10 +13,11 @@
 - `BackDeath`: 允许玩家使用 `/backdeath (简写 /backd)` 返回上次死亡的地点
 - `PlayerTag`: 允许玩家设置称号 (使用权限控制)
 - `SkipNight`: 可以让玩家睡觉直接跳过夜晚 (可关闭) (使用权限控制)
-- `Suicide`: 允许玩家自杀 (可能有 Bug)
+- `Suicide`: 允许玩家自杀 (有 Bug)
 - `SimpleWarp`: 允许玩家设置 / 传送地标点 (可使用中文名)
 - `SimpleTpa`: 允许玩家使用 `/tpa [player]` 互相传送
 
 ## 待办 (TODOS)
 - 修复 `Suicide` 的 Bug
 - 添加新的功能: `CuteLogin`
+- 修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`
