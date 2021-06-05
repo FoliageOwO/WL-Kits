@@ -1,0 +1,97 @@
+name: WL-Kits
+version: ${project.version}
+main: moe.windleaf.WLKits.Main
+api-version: 1.16
+
+# -------------------------------------
+
+commands:
+  anticreeper:
+    aliases:
+      - 'ac'
+    description: '开启或关闭 AntiCreeper'
+    permission: 'wlkits.command.anticreeper'
+
+  backdeath:
+    aliases:
+      - 'backd'
+      - 'bd'
+    description: '返回上一个死亡点'
+
+  playertag:
+    aliases:
+      - 'ptag'
+    description: '设置玩家称号'
+
+  skipnight:
+    aliases:
+      - 'sn'
+    description: '开启或关闭 SkipNight'
+    permission: 'wlkits.command.skipnight'
+
+  suicide:
+    aliases:
+      - 'skill'
+    description: '自杀'
+
+  setwarp:
+    description: '设置地标点'
+
+  delwarp:
+    description: '删除地标点'
+
+  warp:
+    description: '传送至地标点'
+
+  warps:
+    description: '查看所有地标'
+
+  warphelp:
+    description: '查看地标帮助'
+
+  tpa:
+    description: '发送传送请求'
+
+  tpaccept:
+    description: '同意传送请求'
+
+  tpadeny:
+    description: '拒绝传送请求'
+
+  tpacancel:
+    description: '取消传送请求'
+
+  tpahelp:
+    description: '查看 tpa 帮助'
+
+  wlkits:
+    description: 'WL-Kits 命令'
+
+# -------------------------------------
+
+permissions:
+  wlkits.*:
+    description: 'WL-Kits 中所有的权限'
+    default: op
+    children:
+      - wlkits.command.*
+
+  wlkits.command.*:
+    description: 'WL-Kits 子类 Command 中所有的权限'
+    default: op
+    children:
+      - wlkits.command.anticreeper
+      - wlkits.command.playertag
+      - wlkits.command.skipnight
+
+  wlkits.command.anticreeper:
+    description: '开启或关闭 AntiCreeper 所用的权限'
+    default: op
+
+  wlkits.command.playertag:
+    description: '设置玩家称号所用的权限'
+    default: op
+
+  wlkits.command.skipnight:
+    description: '开启或关闭 SkipNight 所用的权限'
+    default: op
