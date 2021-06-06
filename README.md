@@ -1,9 +1,9 @@
 # WL-Kits
 [![使用 Spigot-API](https://img.shields.io/badge/使用-Spigot%20API-green)](https://hub.spigotmc.org/javadocs/bukkit/)
 [![使用 Maven](https://img.shields.io/badge/使用-Maven-blue)](https://hub.spigotmc.org/javadocs/bukkit/)
-![当前版本](https://img.shields.io/badge/当前版本-0.0.4-orange)
+![当前版本](https://img.shields.io/badge/当前版本-0.0.4%20pre4-orange)
 [![使用 IDE](https://img.shields.io/badge/使用%20IDE-JetBrains%20IntelliJ%20IDEA-red)](https://www.jetbrains.com/idea/)
-![完成进度](https://img.shields.io/badge/完成进度-12%25-red)
+![完成进度](https://img.shields.io/badge/完成进度-14%25-red)
 
 一个使用 **Spigot API** 编写的适用于 **Minecraft 1.16.x `Spigot`** 的服务端集成小工具插件。
 
@@ -17,8 +17,11 @@
 - `SimpleWarp`: 允许玩家设置 / 传送地标点 (可使用中文名)
 - `SimpleTpa`: 允许玩家使用 `/tpa [player]` 互相传送
 - `SimpleBack`: 允许玩家返回上一位置
+- `RecipeAdder`: 允许服务器管理员直接通过编辑 yml 文件来加载 / 修改自定义配方 (使用权限控制)
+- `MineBoard`: 挖掘榜 (可关闭)
 
 ## 待办 (TODOS)
-- ~~修复 `Suicide` 的 Bug~~ 已修复
 - 添加新的功能: `CuteLogin`
-- ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ 已修复
+- ~~修复 `Suicide` 的 Bug~~ **已修复**
+- ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **已修复**
+- ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **已修复**
