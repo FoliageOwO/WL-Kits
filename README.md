@@ -25,3 +25,40 @@
 - ~~修复 `Suicide` 的 Bug~~ **已修复**
 - ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **已修复**
 - ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **已修复**
+- 修复 `MineBoard` 会出现两个第一名的问题
+
+## Wiki
+
+### RecipeAdder
+#### 有序合成
+例子: [exampleRecipe.yml](https://github.com/WindLeaf233/WL-Kits/blob/cab50fbb44d10c1974c6a22de30cd5533a5340dd/src/main/resources/exampleRecipe.yml)
+
+格式:
+```yaml
+shape: true # 表示是否为有序
+to: 'DIAMOND' # 合成出的东西 (英文大写, 如 DIAMOND_SWORD)
+amount: 1 # 合成出的数量, 最大 64
+recipe:
+  - '###' # 每一行用不同的符号表示不同的物品
+  - '#@#' # 可以用字母、数字、符号
+  - '###' # 甚至可以用文字
+format:
+  '#': 'DIR' # 解释上面的符号代替的是什么物品
+  '@': 'IRON_INGOT' # 也要英文大写
+```
+#### 无序合成
+例子: [exampleRecipeShapeless.yml](https://github.com/WindLeaf233/WL-Kits/blob/cab50fbb44d10c1974c6a22de30cd5533a5340dd/src/main/resources/exampleRecipeShapeless.yml)
+
+格式:
+```yaml
+  
+shape: false # 表示是否为有序
+to: 'IRON_INGOT' # 合成出的东西 (英文大写, 如 DIAMOND_SWORD)
+amount: 1 # 合成出的数量, 最大 64
+requires:
+  - 'DIRT' # 将所有需要的东西都写在这
+  - 'DIAMOND' # 如果没写全可能会报错
+count:
+  DIRT: 3 # 表示每个物品需要多少个, 不能超过 9
+  DIAMOND: 1 # 加起来 = 4: 背包合成; 加起来 = 9: 工作台合成
+```
