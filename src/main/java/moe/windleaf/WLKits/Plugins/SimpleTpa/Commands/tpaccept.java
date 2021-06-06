@@ -17,6 +17,7 @@ public class tpaccept implements CommandExecutor {
             Player toPlayer = SimpleTpa.tpaLogs.get(sender);
             if (toPlayer != null) {
                 toPlayer.teleport((Player) sender);
+                SimpleTpa.tpaLogs.remove(sender);
                 Utils.sendPrefix(sender, "&a已接受, 传送成功!");
                 Utils.sendPrefix(toPlayer, "&a已接受, 传送成功!");
             } else {

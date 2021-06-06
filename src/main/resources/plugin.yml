@@ -67,6 +67,10 @@ commands:
   wlkits:
     description: 'WL-Kits 命令'
 
+  back:
+    description: '返回上一位置'
+    permission: wlkits.command.back
+
 # -------------------------------------
 
 permissions:
@@ -85,13 +89,13 @@ permissions:
       - wlkits.command.skipnight
 
   wlkits.command.anticreeper:
-    description: '开启或关闭 AntiCreeper 所用的权限'
     default: op
 
   wlkits.command.playertag:
-    description: '设置玩家称号所用的权限'
     default: op
 
   wlkits.command.skipnight:
-    description: '开启或关闭 SkipNight 所用的权限'
     default: op
+
+  wlkits.command.back:
+    default: true

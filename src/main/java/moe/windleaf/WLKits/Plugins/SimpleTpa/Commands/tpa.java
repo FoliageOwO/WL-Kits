@@ -10,7 +10,9 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class tpa implements CommandExecutor, TabCompleter {
     @Override
@@ -45,8 +47,11 @@ public class tpa implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        List<String> list = new ArrayList<>();
-        for (Player p : Bukkit.getOnlinePlayers()) { list.add(p.getName()); }
-            return list;
+        List<String> tmp = new ArrayList<>();
+        for (Player p : Bukkit.getOnlinePlayers()) { tmp.add(p.getName()); }
+        List<Object> filter = Arrays.stream(tmp.toArray()).filter(s -> s.toString().startsWith(args[0])).collect(Collectors.toList());
+        List<String> players = new ArrayList<>();
+        for (Object i : filter) { players.add(i.toString()); }
+        return players;
     }
 }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class SimpleTpa {
     public static HashMap<Player, Player> tpaLogs = new HashMap<>();
 
-    public void load() {
+    public static void load() {
         Utils.commandRegister("tpa", new tpa());
         Utils.commandRegister("tpacancel", new tpacancel());
         Utils.commandRegister("tpaccept", new tpaccept());

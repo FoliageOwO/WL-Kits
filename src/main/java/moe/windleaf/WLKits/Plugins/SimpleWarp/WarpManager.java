@@ -18,6 +18,7 @@ public class WarpManager {
         try {
             file = new File(SimpleWarp.path);
             if (!file.exists()) {
+                @SuppressWarnings("unused")
                 boolean created = file.getParentFile().mkdirs();
                 Utils.makeFile(SimpleWarp.path);
             }

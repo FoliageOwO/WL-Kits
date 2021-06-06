@@ -21,6 +21,7 @@ public class Utils {
         plugins.add("Suicide");
         plugins.add("SimpleWarp");
         plugins.add("SimpleTpa");
+        plugins.add("SimpleBack");
         return plugins;
     }
 
@@ -38,6 +39,14 @@ public class Utils {
 
     public static void logInfoPrefixCustom(String prefix, String string) { Main.I.logger.info(prefix + formatColor(string)); }
 
+    public static void autoLogSend(String string) { logInfo(string); }
+
+    @SuppressWarnings("unused")
+    public static void autoLogSend(CommandSender sender, String string) { send(sender, string); }
+
+    public static void autoLogSendPrefix(CommandSender sender, String string) { sendPrefix(sender, string); }
+
+    @SuppressWarnings("unused")
     public static void broadcast(String string) { Bukkit.broadcastMessage(formatColor(string)); }
 
     public static void broadcast(String string, Boolean formatColor) {
@@ -58,8 +67,10 @@ public class Utils {
 
     public static void doNotHavePermission(CommandSender sender) { sendPrefix(sender, "&c你没有使用该命令的权限!"); }
 
+    @SuppressWarnings("unused")
     public static void doNotHavePermission(Player player) { sendPrefix(player, "&c你没有使用该命令的权限!"); }
 
+    @SuppressWarnings("unused")
     public static void invalidArgs(Player player, String usage) { sendPrefix(player, String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage)); }
 
     public static void invalidArgs(CommandSender sender, String usage) { sendPrefix(sender, String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage)); }
@@ -74,6 +85,7 @@ public class Utils {
         Objects.requireNonNull(Main.I.getCommand(name)).setExecutor(executor);
     }
 
+    @SuppressWarnings("unused")
     public static void commandCompleterRegister(String name, TabCompleter completer) {
         Objects.requireNonNull(Main.I.getCommand(name)).setTabCompleter(completer);
     }
@@ -95,10 +107,12 @@ public class Utils {
         _sendHelp(sender, helps);
     }
 
+    @SuppressWarnings("unused")
     public static void sendHelp(Player player, String[] helps) {
         _sendHelp(player, helps);
     }
 
+    @SuppressWarnings("unused")
     public static void hyphen(Player player) { Utils.send(player, "&f---------------------------------------------------"); }
 
     public static void hyphen(CommandSender sender) { Utils.send(sender, "&f---------------------------------------------------"); }
@@ -111,6 +125,7 @@ public class Utils {
 
     public static String formatColor(String string) { return string.replace("&", "§"); }
 
+    @SuppressWarnings("unused")
     public static UUID getUUID(Player player) { return player.getUniqueId(); }
 
     public static String getUUIDString(Player player) { return String.valueOf(player.getUniqueId()); }
@@ -156,7 +171,7 @@ public class Utils {
     public static void makeDir(String path) {
         File file = new File(path);
         if (!file.exists()) {
-            boolean f = file.mkdir();
+            @SuppressWarnings("unused") boolean f = file.mkdir();
         }
     }
 
@@ -164,8 +179,8 @@ public class Utils {
         File file = new File(path);
         if (!file.exists()) {
             try {
-                boolean createdDIR = file.getParentFile().mkdirs();
-                boolean createdFILE = file.createNewFile();
+                @SuppressWarnings("unused") boolean createdDIR = file.getParentFile().mkdirs();
+                @SuppressWarnings("unused") boolean createdFILE = file.createNewFile();
             } catch (IOException e) {
                 logInfoPrefix("&c无法新建数据文件!");
                 e.printStackTrace();
@@ -177,6 +192,7 @@ public class Utils {
         sendPrefix(sender, "&c只有玩家才能这样做!");
     }
 
+    @SuppressWarnings("unused")
     public static boolean contains(String[] list, String source) {
         List<?> tempList = Arrays.asList(list);
         return tempList.contains(source);

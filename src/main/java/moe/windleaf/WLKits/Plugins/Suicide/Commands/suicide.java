@@ -14,8 +14,8 @@ public class suicide implements CommandExecutor {
             Utils.mustPlayer(sender);
             return false;
         } else {
-            ((Player) sender).setHealth((double) 0);
-            Suicide.lastSuicide = sender.getName();
+            Suicide.lastSuicide = (Player) sender;
+            ((Player) sender).setHealth(0);
             return true;
         }
     }

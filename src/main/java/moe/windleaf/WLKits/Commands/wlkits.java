@@ -1,6 +1,5 @@
 package moe.windleaf.WLKits.Commands;
 
-import moe.windleaf.WLKits.Main;
 import moe.windleaf.WLKits.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,6 +13,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class wlkits implements CommandExecutor, TabCompleter {
+    private static final String line1 = "&f|------------------------------------------------|";
+    private static final String line2 = "&f|  &aWL-Kits &3[moe.windleaf.WLKits] &eversion: %s  &f|";
+    private static final String line3 = "&f|   &1by: WindLeaf  &b<www.github.com/WindLeaf233>   &f|";
+    private static final String line4 = "&f|------------------------------------------------|";
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
@@ -29,17 +33,19 @@ public class wlkits implements CommandExecutor, TabCompleter {
                     break;
                 case "version":
                     if (sender instanceof Player) {
-                        Utils.send(sender, "&f------------------------------------------------");
-                        Utils.send(sender, "&f- &aWL-Kits &3[moe.windleaf.WLKits] &eversion: " + Main.version + "&f -");
-                        Utils.send(sender, "&f- &1by: WindLeaf &b[www.github.com/WindLeaf233]    &f-");
-                        Utils.send(sender, "&f------------------------------------------------");
+                        Utils.autoLogSendPrefix(sender, line1);
+                        Utils.autoLogSendPrefix(sender, line2);
+                        Utils.autoLogSendPrefix(sender, line3);
+                        Utils.autoLogSendPrefix(sender, line4);
                     } else {
-                        Utils.logInfo("&f------------------------------------------------");
-                        Utils.logInfo("&f- &aWL-Kits &3[moe.windleaf.WLKits] &eversion: " + Main.version + "&f -");
-                        Utils.logInfo("&f- &1by: WindLeaf &b[www.github.com/WindLeaf233]    &f-");
-                        Utils.logInfo("&f------------------------------------------------");
+                        Utils.autoLogSend(line1);
+                        Utils.autoLogSend(line2);
+                        Utils.autoLogSend(line3);
+                        Utils.autoLogSend(line4);
                     }
                     break;
+                case "plugins":
+
                 default:
                     Utils.invalidArgs(sender, "/wlkits help");
             }

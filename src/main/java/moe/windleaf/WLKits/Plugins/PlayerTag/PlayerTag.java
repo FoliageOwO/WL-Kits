@@ -12,7 +12,7 @@ public class PlayerTag {
     public static HashMap<String, String> playerTags;
 
     @SuppressWarnings("unchecked")
-    public void load() {
+    public static void load() {
         Utils.makeDir(Main.prefixPath + "PlayerTag");
         playerTags = (HashMap<String, String>) Utils.loadHashMap(path);
         Utils.eventRegister(new Events());

@@ -5,7 +5,7 @@ import moe.windleaf.WLKits.Plugins.SkipNight.Commands.skipnight;
 import moe.windleaf.WLKits.Utils;
 
 public class SkipNight {
-    public void load() {
+    public static void load() {
         Utils.commandRegister("skipnight", new skipnight());
         Utils.eventRegister(new Events());
     }

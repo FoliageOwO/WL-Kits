@@ -34,14 +34,14 @@ public final class Main extends JavaPlugin {
         // 相关初始化
         I = this;
         long startTime = System.currentTimeMillis();
-        version = "0.0.3";
+        version = "0.0.4";
 
         // 显示 WLKits 相关的信息
 
-        Utils.logInfo("&f------------------------------------------------");
-        Utils.logInfo("&f- &aWL-Kits &3[moe.windleaf.WLKits] &eversion: " + version + "&f -");
-        Utils.logInfo("&f- &1by: WindLeaf &b[www.github.com/WindLeaf233]    &f-");
-        Utils.logInfo("&f------------------------------------------------");
+        Utils.logInfo("&f|------------------------------------------------|");
+        Utils.logInfo(String.format("&f|  &aWL-Kits &3[moe.windleaf.WLKits] &eversion: %s  &f|", version));
+        Utils.logInfo("&f|   &1by: WindLeaf  &b<www.github.com/WindLeaf233>   &f|");
+        Utils.logInfo("&f|------------------------------------------------|");
 
         // 配置文件
         config = getConfig();

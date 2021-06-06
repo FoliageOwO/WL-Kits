@@ -10,7 +10,7 @@ public class SimpleWarp {
     public static String path = Main.prefixPath + "SimpleWarp" + File.separator + "warps.yml";
     public static final WarpManager warpManager = new WarpManager();
 
-    public void load() {
+    public static void load() {
         warpManager.init();
         Utils.commandRegister("setwarp", new setwarp());
         Utils.commandRegister("delwarp", new delwarp());
