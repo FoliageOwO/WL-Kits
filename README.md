@@ -30,6 +30,9 @@
 ## Wiki
 
 ### RecipeAdder
+
+注意! 如果格式不规范将可能抛出 `NullPointerException`, 故请严格使用此格式!
+
 #### 有序合成
 例子: [exampleRecipe.yml](https://github.com/WindLeaf233/WL-Kits/blob/cab50fbb44d10c1974c6a22de30cd5533a5340dd/src/main/resources/exampleRecipe.yml)
 
