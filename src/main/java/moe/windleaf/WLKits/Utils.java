@@ -22,6 +22,8 @@ public class Utils {
         plugins.add("SimpleWarp");
         plugins.add("SimpleTpa");
         plugins.add("SimpleBack");
+        plugins.add("RecipeAdder");
+        plugins.add("MineBoard");
         return plugins;
     }
 

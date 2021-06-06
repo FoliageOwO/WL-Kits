@@ -1,0 +1,9 @@
+shape: false
+to: 'IRON_INGOT'
+amount: 1
+requires:
+  - 'DIRT'
+  - 'DIAMOND'
+count:
+  DIRT: 3
+  DIAMOND: 1

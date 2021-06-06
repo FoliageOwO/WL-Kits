@@ -1,6 +1,8 @@
 package moe.windleaf.WLKits;
 
 import moe.windleaf.WLKits.Commands.wlkits;
+import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -34,14 +36,14 @@ public final class Main extends JavaPlugin {
         // 相关初始化
         I = this;
         long startTime = System.currentTimeMillis();
-        version = "0.0.4";
+        version = "0.0.4-pre3";
 
-        // 显示 WLKits 相关的信息
+        // 显示 WL-Kits 相关的信息
 
-        Utils.logInfo("&f|------------------------------------------------|");
-        Utils.logInfo(String.format("&f|  &aWL-Kits &3[moe.windleaf.WLKits] &eversion: %s  &f|", version));
-        Utils.logInfo("&f|   &1by: WindLeaf  &b<www.github.com/WindLeaf233>   &f|");
-        Utils.logInfo("&f|------------------------------------------------|");
+        Utils.logInfo("&f------------------------------------------------------");
+        Utils.logInfo(String.format("&f   &aWL-Kits &3[moe.windleaf.WLKits] &9version: %s", version));
+        Utils.logInfo("&f      &1by: WindLeaf  &b<www.github.com/WindLeaf233>");
+        Utils.logInfo("&f------------------------------------------------------");
 
         // 配置文件
         config = getConfig();
@@ -67,5 +69,8 @@ public final class Main extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() { Utils.logInfo("&f已卸载!"); }
+    public void onDisable() {
+        Bukkit.removeRecipe(new NamespacedKey(this, "wlkits_recipes"));
+        Utils.logInfo("&f已卸载!");
+    }
 }

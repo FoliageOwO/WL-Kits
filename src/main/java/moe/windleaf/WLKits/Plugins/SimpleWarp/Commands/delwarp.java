@@ -22,6 +22,7 @@ public class delwarp implements CommandExecutor, TabCompleter {
             if (SimpleWarp.warpManager.warps.getKeys(false).contains(args[0])) {
                 SimpleWarp.warpManager.warps.set(args[0], null);
                 Utils.sendPrefix(sender, String.format("&a成功删除地标 &6%s &a!", args[0]));
+                Utils.broadcastPlayersPrefix(String.format("&c玩家 &6%s &c删除了地标点 &9%s&c!", sender.getName(), args[0]));
             } else {
                 Utils.sendPrefix(sender, String.format("&c地标 &6%s &c不存在!", args[0]));
             }

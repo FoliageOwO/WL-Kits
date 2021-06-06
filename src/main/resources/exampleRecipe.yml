@@ -1,0 +1,10 @@
+shape: true
+to: 'DIAMOND'
+amount: 1
+recipe:
+  - '###'
+  - '#@#'
+  - '###'
+format:
+  '#': 'DIR'
+  '@': 'IRON_INGOT'

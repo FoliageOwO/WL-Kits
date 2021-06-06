@@ -3,7 +3,9 @@ package moe.windleaf.WLKits;
 import moe.windleaf.WLKits.Plugins.AntiCreeper.AntiCreeper;
 import moe.windleaf.WLKits.Plugins.JoinInfo.JoinInfo;
 import moe.windleaf.WLKits.Plugins.BackDeath.BackDeath;
+import moe.windleaf.WLKits.Plugins.MineBoard.MineBoard;
 import moe.windleaf.WLKits.Plugins.PlayerTag.PlayerTag;
+import moe.windleaf.WLKits.Plugins.RecipeAdder.RecipeAdder;
 import moe.windleaf.WLKits.Plugins.SimpleBack.SimpleBack;
 import moe.windleaf.WLKits.Plugins.SimpleTpa.SimpleTpa;
 import moe.windleaf.WLKits.Plugins.SimpleWarp.SimpleWarp;
@@ -23,5 +25,7 @@ public class PluginManager {
         SimpleWarp.load();
         SimpleTpa.load();
         SimpleBack.load();
+        RecipeAdder.load();
+        MineBoard.load();
     }
 }

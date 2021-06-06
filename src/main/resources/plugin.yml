@@ -71,6 +71,17 @@ commands:
     description: '返回上一位置'
     permission: wlkits.command.back
 
+  recipeadder:
+    aliases:
+      - 'ra'
+    description: '配方管理'
+    permission: wlkits.command.recipeadder
+
+  mineboard:
+    aliases:
+      - 'mb'
+    permission: wlkits.command.mineboard
+
 # -------------------------------------
 
 permissions:
@@ -99,3 +110,6 @@ permissions:
 
   wlkits.command.back:
     default: true
+
+  wlkits.command.mineboard:
+    default: op

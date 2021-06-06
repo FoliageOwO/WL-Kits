@@ -32,7 +32,7 @@ public class warp implements CommandExecutor, TabCompleter {
                             getDouble(args[0] + ".y"), getDouble(args[0] + ".z"),
                             getFloat(args[0] + ".yaw"), getFloat(args[0] + ".pitch"));
                     ((Player) sender).teleport(location);
-                    Utils.sendPrefix(sender, String.format("&a成功传送到地标 &6%s &a!", args[0]));
+                    Utils.sendPrefix(sender, String.format("&a成功传送到地标 &6%s&a!", args[0]));
                 } else {
                     Utils.sendPrefix(sender, String.format("&c没有叫做 &6%s &c的地标!", args[0]));
                 }
