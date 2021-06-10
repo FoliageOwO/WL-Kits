@@ -12,7 +12,7 @@ public class Events implements Listener {
         Player player = event.getEntity();
         if (player == Suicide.lastSuicide) {
             event.setDeathMessage("");
-            Utils.broadcastPlayers(String.format("&c玩家 &6%s &c结束了他的生命.", player.getName()));
+            Utils.broadcastPlayers(Utils.getPluginPrefix("Suicide") + String.format("&c玩家 &6%s &c结束了他的生命.", player.getName()));
             Suicide.lastSuicide = null;
         }
     }

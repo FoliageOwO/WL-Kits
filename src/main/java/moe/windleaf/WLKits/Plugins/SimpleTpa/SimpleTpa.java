@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public class SimpleTpa {
     public static HashMap<Player, Player> tpaLogs = new HashMap<>();
+    public static final String name = "SimpleTpa";
 
     public static void load() {
         Utils.commandRegister("tpa", new tpa());

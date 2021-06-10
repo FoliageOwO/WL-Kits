@@ -11,7 +11,7 @@ public class suicide implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Utils.mustPlayer(sender);
+            Utils.mustPlayer(sender, "Suicide");
             return false;
         } else {
             Suicide.lastSuicide = (Player) sender;

@@ -9,10 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class playertag implements CommandExecutor, TabCompleter {
@@ -22,35 +19,36 @@ public class playertag implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.hasPermission("wlkits.command.playertag")) {
             if (args.length == 0) {
-                Utils.sendPrefix(sender, "&a使用 &6/playertag help &a查看帮助!");
+                Utils.smartSendPrefix(sender, "&a使用 &6/playertag help &a查看帮助!", "PlayerTag");
             } else {
                 switch (args[0]) {
                     case "help":
-                        Utils.sendHelp(sender, new String[] {
-                                "/playertag help &f: &a查看此帮助",
-                                "/playertag set [player] [tag] &f: &a设置一个玩家的称号",
-                                "/playertag remove [player] &f: &a删除一个玩家的称号",
-                                "/playertag check [player] &f: &a查看一个玩家的称号",
-                                "/playertag reset [player] &f: &a重置一个玩家的称号 | 名称"
-                        });
-                        return true;
+                        Map<String, String> helps = new HashMap<>();
+                        helps.put("/playertag help", "查看此帮助");
+                        helps.put("/playertag set [player] [tag]", "设置一个玩家的称号");
+                        helps.put("/playertag remove [player]", "删除一个玩家的称号");
+                        helps.put("/playertag check [player]", "查看一个玩家的称号");
+                        helps.put("/playertag reset [player]", "重置一个玩家的称号 | 名称");
+                        Utils.sendHelp(sender, helps);
+                        break;
                     case "set":
                         if (args.length < 3) {
-                            Utils.invalidArgs(sender, "/playertag help");
+                            Utils.invalidArgs(sender, "/playertag help", "PlayerTag");
                             return false;
                         } else {
                             // 设置
                             Player player = Bukkit.getPlayer(args[1]);
-                            if (player == null) { noPlayer(sender, args[0]); } else {
+                            if (player == null) { noPlayer(sender, args[1]); } else {
                                 playerTags.put(Utils.getUUIDString(player), Utils.formatColor(args[2]) + " ");
                                 Utils.saveHashMap(playerTags, PlayerTag.path);
                                 Utils.sendPrefix(sender, "&a成功将玩家 &6" + player.getName() + " &a的称号设置为 \"" + Utils.formatColor(args[2]) + "&a\".");
                                 return true;
                             }
                         }
+                        break;
                     case "remove":
                         if (args.length < 2) {
-                            Utils.invalidArgs(sender, "/playertag help");
+                            Utils.invalidArgs(sender, "/playertag help", "PlayerTag");
                             return false;
                         } else {
                             // 删除
@@ -62,28 +60,27 @@ public class playertag implements CommandExecutor, TabCompleter {
                                 return true;
                             }
                         }
+                        break;
                     case "check":
                         if (args.length < 2) {
-                            Utils.invalidArgs(sender, "/playertag help");
+                            Utils.invalidArgs(sender, "/playertag help", "PlayerTag");
                             return false;
                         } else {
                             // 查看
                             Player player = Bukkit.getPlayer(args[1]);
                             if (player == null) { noPlayer(sender, args[1]); } else {
                                 String tag = playerTags.get(Utils.getUUIDString(player));
-                                if (tag == null) {
-                                    noTag(sender, player.getName());
-                                } else if (tag.equals("")){
-                                    noTag(sender, player.getName());
+                                if (tag == null) { noTag(sender, player.getName()); } else if (tag.equals("")){ noTag(sender, player.getName());
                                 } else {
                                     Utils.sendPrefix(sender, "&a玩家 &6" + player.getName() + " &a的称号为: \"&r" + tag.trim() + "&a\".");
                                 }
                                 return true;
                             }
                         }
+                        break;
                     case "reset":
                         if (args.length < 2) {
-                            Utils.invalidArgs(sender, "/playertag help");
+                            Utils.invalidArgs(sender, "/playertag help", "PlayerTag");
                             return false;
                         } else {
                             // 重置
@@ -97,8 +94,9 @@ public class playertag implements CommandExecutor, TabCompleter {
                             return true;
                         }
                     default:
-                        Utils.invalidArgs(sender, "/playertag help");
+                        Utils.invalidArgs(sender, "/playertag help", "PlayerTag");
                 }
+                return true;
             }
         } else {
             Utils.doNotHavePermission(sender);

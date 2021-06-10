@@ -9,29 +9,27 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class wlkits implements CommandExecutor, TabCompleter {
-    private static final String line1 = "&f------------------------------------------------------";
+    private static final String line1 = "&f-------------------------------------------------------";
     private static final String line2 = "&f   &aWL-Kits &3[moe.windleaf.WLKits] &9version: %s";
     private static final String line3 = "&f      &1by: WindLeaf  &b<www.github.com/WindLeaf233>";
-    private static final String line4 = "&f------------------------------------------------------";
+    private static final String line4 = "&f-------------------------------------------------------";
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
-            Utils.invalidArgs(sender, "/wlkits help");
+            Utils.invalidArgs(sender, "/wlkits help", "");
             return false;
         } else {
             switch (args[0]) {
                 case "help":
-                    Utils.sendHelp(sender, new String[]{
-                            "/wlkits help &f: &a查看此帮助",
-                            "/wlkits version &f: &a查看 &6WL-Kits &a插件版本"
-                    });
+                    Map<String, String> helps = new HashMap<>();
+                    helps.put("/wlkits help", "查看此帮助");
+                    helps.put("/wlkits version", "查看 &6WL-Kits &a插件版本");
+                    Utils.sendHelp(sender, helps);
                     break;
                 case "version":
                     if (sender instanceof Player) {
@@ -47,7 +45,7 @@ public class wlkits implements CommandExecutor, TabCompleter {
                     }
                     break;
                 default:
-                    Utils.invalidArgs(sender, "/wlkits help");
+                    Utils.invalidArgs(sender, "/wlkits help", "");
             }
             return true;
         }

@@ -13,16 +13,16 @@ public class tpacancel implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Utils.mustPlayer(sender);
+            Utils.mustPlayer(sender, SimpleTpa.name);
             return false;
         } else {
             Player toPlayer = SimpleTpa.tpaLogs.get(sender);
             Player player = getKeyByValue(SimpleTpa.tpaLogs, toPlayer);
             if (toPlayer != null && player != null && player == sender) {
                 SimpleTpa.tpaLogs.remove(sender);
-                Utils.sendPrefix(sender, "&a已取消传送请求!");
+                Utils.smartSendPrefix(sender, "&a已取消传送请求!", "SimpleTpa");
             } else {
-                Utils.sendPrefix(sender, "&c你没有待处理的传送请求!");
+                Utils.smartSendPrefix(sender, "&c你没有待处理的传送请求!", "SimpleTpa");
             }
             return true;
         }

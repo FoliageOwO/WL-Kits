@@ -13,7 +13,8 @@ public class Events implements Listener {
         if (Main.I.config.getBoolean("enable-skipnight")) {
             World world = event.getPlayer().getWorld();
             world.setTime(100);
-            Utils.logInfoPrefixCustom(Utils.getPrefix("SkipNight"), String.format("&a玩家 &6%s &a跳过了夜晚!", event.getPlayer().getName()));
+            String prefix = Utils.getPluginPrefix("SkipNight");
+            Utils.logInfo(prefix + String.format("&a玩家 &6%s &a跳过了夜晚!", event.getPlayer().getName()));
         }
     }
 }

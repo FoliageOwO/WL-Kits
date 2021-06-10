@@ -11,14 +11,14 @@ public class back implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Utils.mustPlayer(sender);
+            Utils.mustPlayer(sender, "SimpleBack");
             return false;
         } else {
             if (SimpleBack.teleportLog.containsKey(sender)) {
                 ((Player) sender).teleport(SimpleBack.teleportLog.get(sender));
-                Utils.sendPrefix(sender, "&a成功返回上一位置.");
+                Utils.smartSendPrefix(sender, "&a成功返回上一位置.", "SimpleBack");
             } else {
-                Utils.sendPrefix(sender, "&c无法返回上一位置!");
+                Utils.smartSendPrefix(sender, "&c无法返回上一位置!", "SimpleBack");
             }
             return true;
         }

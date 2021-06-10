@@ -19,11 +19,11 @@ public class warp implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Utils.mustPlayer(sender);
+            Utils.mustPlayer(sender, "SimpleWarp");
             return false;
         } else {
             if (args.length < 1) {
-                Utils.invalidArgs(sender, "/warphelp");
+                Utils.invalidArgs(sender, "/warphelp", "SimpleWarp");
                 return false;
             } else {
                 if (SimpleWarp.warpManager.warps.contains(args[0])) {
@@ -32,9 +32,9 @@ public class warp implements CommandExecutor, TabCompleter {
                             getDouble(args[0] + ".y"), getDouble(args[0] + ".z"),
                             getFloat(args[0] + ".yaw"), getFloat(args[0] + ".pitch"));
                     ((Player) sender).teleport(location);
-                    Utils.sendPrefix(sender, String.format("&a成功传送到地标 &6%s&a!", args[0]));
+                    Utils.smartSendPrefix(sender, String.format("&a成功传送到地标 &6%s&a!", args[0]), "SimpleWarp");
                 } else {
-                    Utils.sendPrefix(sender, String.format("&c没有叫做 &6%s &c的地标!", args[0]));
+                    Utils.smartSendPrefix(sender, String.format("&c没有叫做 &6%s &c的地标!", args[0]), "SimpleWarp");
                 }
                 return true;
             }

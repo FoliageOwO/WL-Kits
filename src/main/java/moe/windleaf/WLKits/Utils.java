@@ -11,22 +11,6 @@ import java.io.*;
 import java.util.*;
 
 public class Utils {
-    public static ArrayList<String> getPlugins() {
-        ArrayList<String> plugins = new ArrayList<>();
-        plugins.add("AntiCreeper");
-        plugins.add("JoinInfo");
-        plugins.add("BackDeath");
-        plugins.add("PlayerTag");
-        plugins.add("SkipNight");
-        plugins.add("Suicide");
-        plugins.add("SimpleWarp");
-        plugins.add("SimpleTpa");
-        plugins.add("SimpleBack");
-        plugins.add("RecipeAdder");
-        plugins.add("MineBoard");
-        return plugins;
-    }
-
     public static void send(CommandSender sender, String string) { sender.sendMessage(formatColor(string)); }
 
     public static void send(Player player, String string) { player.sendMessage(formatColor(string)); }
@@ -35,11 +19,11 @@ public class Utils {
 
     public static void sendPrefix(Player player, String string) { player.sendMessage(Main.I.prefix + formatColor(string)); }
 
-    public static void logInfo(String string) { Main.I.logger.info(formatColor(string)); }
+    public static void logInfo(String string) { Main.I.logger.log(formatColor(string)); }
 
-    public static void logInfoPrefix(String string) { Main.I.logger.info(Main.I.prefix + formatColor(string)); }
+    public static void logInfoPrefix(String string) { Main.I.logger.log(Main.I.prefix + formatColor(string)); }
 
-    public static void logInfoPrefixCustom(String prefix, String string) { Main.I.logger.info(prefix + formatColor(string)); }
+    public static void logInfoPrefixCustom(String prefix, String string) { Main.I.logger.log(prefix + formatColor(string)); }
 
     public static void autoLogSend(String string) { logInfo(string); }
 
@@ -73,9 +57,17 @@ public class Utils {
     public static void doNotHavePermission(Player player) { sendPrefix(player, "&c你没有使用该命令的权限!"); }
 
     @SuppressWarnings("unused")
-    public static void invalidArgs(Player player, String usage) { sendPrefix(player, String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage)); }
+    public static void invalidArgs(Player player, String usage, String name) {
+        String prefix;
+        if (!name.equals("")) { prefix = getPluginPrefix(name); } else { prefix = getPrefix("WL-Kits"); }
+        send(player, prefix + String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage));
+    }
 
-    public static void invalidArgs(CommandSender sender, String usage) { sendPrefix(sender, String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage)); }
+    public static void invalidArgs(CommandSender sender, String usage, String name) {
+        String prefix;
+        if (!name.equals("")) { prefix = getPluginPrefix(name); } else { prefix = getPrefix("WL-Kits"); }
+        send(sender, prefix + String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage));
+    }
 
     public static boolean hasCommandPermission(CommandSender sender, String name) { return sender.hasPermission("wlkits.command." + name); }
 
@@ -97,32 +89,31 @@ public class Utils {
         Objects.requireNonNull(Main.I.getCommand(name)).setTabCompleter((TabCompleter) executor);
     }
 
-    public static String getPrefix(String name, String color) {
-        return formatColor("&f[" + color + name + "&f]" + " ");
-    }
+    public static String getPluginPrefix(String name) { return formatColor(String.format("&a[WL-Kits] &8%s &b&l>> ", name)); }
 
     public static String getPrefix(String name) {
-        return formatColor("&f[&3" + name + "&f]" + " ");
+        return formatColor(String.format("&a[%s] &b&l>> ", name));
     }
 
-    public static void sendHelp(CommandSender sender, String[] helps) {
+    public static void sendHelp(CommandSender sender, Map<String, String> helps) {
         _sendHelp(sender, helps);
     }
 
     @SuppressWarnings("unused")
-    public static void sendHelp(Player player, String[] helps) {
+    public static void sendHelp(Player player, Map<String, String> helps) {
         _sendHelp(player, helps);
     }
 
     @SuppressWarnings("unused")
-    public static void hyphen(Player player) { Utils.send(player, "&f---------------------------------------------------"); }
+    public static void hyphen(Player player) { Utils.send(player, "&f-----------------------------------------------"); }
 
-    public static void hyphen(CommandSender sender) { Utils.send(sender, "&f---------------------------------------------------"); }
+    public static void hyphen(CommandSender sender) { Utils.send(sender, "&f-----------------------------------------------"); }
 
-    private static void _sendHelp(CommandSender sender, String[] helps) {
+    private static void _sendHelp(CommandSender sender, Map<String, String> helps) {
         hyphen(sender);
-        for (String i : helps) { Utils.send(sender, "&8» &6" + i); }
-        hyphen(sender);
+        for (String i : helps.keySet()) { Utils.send(sender, String.format("&8» &6%s &f: &a%s"
+                        .replace("|", "&2|&6")
+                , i, helps.get(i))); }
     }
 
     public static String formatColor(String string) { return string.replace("&", "§"); }
@@ -190,13 +181,21 @@ public class Utils {
         }
     }
 
-    public static void mustPlayer(CommandSender sender) {
-        sendPrefix(sender, "&c只有玩家才能这样做!");
+    public static void mustPlayer(CommandSender sender, String name) {
+        send(sender, getPluginPrefix(name) + "&c只有玩家才能这样做!");
     }
 
     @SuppressWarnings("unused")
     public static boolean contains(String[] list, String source) {
         List<?> tempList = Arrays.asList(list);
         return tempList.contains(source);
+    }
+
+    public static void smartSendPrefix(CommandSender sender, String string, String name) {
+        if (sender instanceof Player) {
+            send((Player) sender, getPluginPrefix(name) + string);
+        } else {
+            send(sender, getPluginPrefix(name) + string);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package moe.windleaf.WLKits.Plugins.SimpleWarp.Commands;
+package moe.windleaf.WLKits.Plugins.SimpleHome.Commands;
 
 import moe.windleaf.WLKits.Utils;
 import org.bukkit.command.Command;
@@ -8,14 +8,14 @@ import org.bukkit.command.CommandSender;
 import java.util.HashMap;
 import java.util.Map;
 
-public class warphelp implements CommandExecutor {
+public class homehelp implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Map<String, String> helps = new HashMap<>();
-        helps.put("/warphelp", "查看此帮助");
-        helps.put("/setwarp [name]", "设置地标点");
-        helps.put("/delwarp [name]", "删除地标点");
-        helps.put("/warp [name]", "传送至地标点");
+        helps.put("/homehelp", "显示此帮助");
+        helps.put("/sethome", "在当前位置设置家");
+        helps.put("/delhome", "删除家");
+        helps.put("/home", "回家");
         Utils.sendHelp(sender, helps);
         return true;
     }

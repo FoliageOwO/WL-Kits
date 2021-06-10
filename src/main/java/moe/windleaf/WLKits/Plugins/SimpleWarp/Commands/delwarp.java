@@ -16,15 +16,15 @@ public class delwarp implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
-            Utils.invalidArgs(sender, "/warphelp");
+            Utils.invalidArgs(sender, "/warphelp", "SimpleWarp");
             return false;
         } else {
             if (SimpleWarp.warpManager.warps.getKeys(false).contains(args[0])) {
                 SimpleWarp.warpManager.warps.set(args[0], null);
-                Utils.sendPrefix(sender, String.format("&a成功删除地标 &6%s &a!", args[0]));
-                Utils.broadcastPlayersPrefix(String.format("&c玩家 &6%s &c删除了地标点 &9%s&c!", sender.getName(), args[0]));
+                Utils.smartSendPrefix(sender, String.format("&a成功删除地标 &6%s &a!", args[0]), "SimpleWarp");
+                Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("SimpleWarp") + String.format("&c玩家 &6%s &c删除了地标点 &9%s&c!", sender.getName(), args[0]));
             } else {
-                Utils.sendPrefix(sender, String.format("&c地标 &6%s &c不存在!", args[0]));
+                Utils.smartSendPrefix(sender, String.format("&c地标 &6%s &c不存在!", args[0]), "SimpleWarp");
             }
             return true;
         }

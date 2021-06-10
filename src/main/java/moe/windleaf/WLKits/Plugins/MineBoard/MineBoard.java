@@ -15,16 +15,26 @@ public class MineBoard {
     @SuppressWarnings("unchecked") public static HashMap<String, Integer> scores = (HashMap<String, Integer>) Utils.loadHashMap(path);
     public static ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
     @SuppressWarnings("all") public static Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
-    public static Objective objective = scoreboard.registerNewObjective(
-            "mineboard",
-            "dummy",
-            ChatColor.GOLD + "" + ChatColor.BOLD + "挖掘榜"
-    );
+    public static Objective objective;
 
     public static void load() {
         Utils.makeDir(Main.prefixPath + "MineBoard");
-        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        if (Main.I.config.getBoolean("enable-mineboard")) { register(); }
         Utils.eventRegister(new Events());
         Utils.commandRegister("mineboard", new mineboard());
+    }
+
+    public static void register() {
+        objective = scoreboard.registerNewObjective(
+                "mineboard",
+                "dummy",
+                ChatColor.GOLD + "" + ChatColor.BOLD + "挖掘榜");
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+    }
+
+    public static void unload() {
+        objective.unregister();
+        Objective objective = scoreboard.getObjective(DisplaySlot.SIDEBAR);
+        if (objective != null) { objective.unregister(); }
     }
 }

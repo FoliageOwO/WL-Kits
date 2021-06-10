@@ -12,15 +12,15 @@ public class backdeath implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            Utils.mustPlayer(sender);
+            Utils.mustPlayer(sender, "BackDeath");
         } else {
             Player player = (Player) sender;
             Location location = Events.tpLogs.get(player);
             if (location == null) {
-                Utils.sendPrefix(player, "&c无法返回上一个死亡点!");
+                Utils.smartSendPrefix(player, "&c无法返回上一个死亡点!", "BackDeath");
             } else {
                 player.teleport(location);
-                Utils.sendPrefix(player, "&a已返回上一个死亡点!");
+                Utils.smartSendPrefix(player, "&a已返回上一个死亡点!", "BackDeath");
             }
         }
         return false;

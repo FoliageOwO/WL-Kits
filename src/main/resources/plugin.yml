@@ -80,7 +80,29 @@ commands:
   mineboard:
     aliases:
       - 'mb'
+    description: '挖掘榜设置'
     permission: wlkits.command.mineboard
+
+  sethome:
+    aliases:
+      - 'sh'
+    description: '设置家'
+
+  delhome:
+    aliases:
+      - 'dh'
+    description: '删除家'
+
+  home:
+    aliases:
+      - 'h'
+    description: '回家'
+
+  homehelp:
+    aliases:
+      - 'hh'
+    description: '家帮助'
+
 
 # -------------------------------------
 

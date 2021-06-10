@@ -26,7 +26,7 @@ public class Events implements Listener {
     }
 
     public void sendS(Player player, String color, String type) {
-        Utils.logInfoPrefixCustom(Utils.getPrefix("JoinInfo"), color + "玩家 " +
+        Utils.logInfoPrefixCustom(Utils.getPluginPrefix("JoinInfo"), color + "玩家 " +
                 player.getName() + " (" + player.getUniqueId() + ") [" + player.getAddress() + "] " + type + "了服务器!");
     }
 
