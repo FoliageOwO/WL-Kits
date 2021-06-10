@@ -9,23 +9,39 @@
 
 ## 功能 (子插件)
 - `AntiCreeper`: 可以防止 `Creeper` 爆炸破坏地形, 但又不影响 `mobGriefing` 引起的一系列问题 (可关闭) (使用权限控制)
-- `JoinInfo`: 可以在玩家进入 / 离开服务器时向其他玩家 / CONSOLE 发送对应消息
+- `JoinInfo`: 可以在玩家进入、离开服务器时向其他玩家、CONSOLE 发送对应消息
 - `BackDeath`: 允许玩家使用 `/backdeath (简写 /backd)` 返回上次死亡的地点
 - `PlayerTag`: 允许玩家设置称号 (使用权限控制)
 - `SkipNight`: 可以让玩家睡觉直接跳过夜晚 (可关闭) (使用权限控制)
 - `Suicide`: 允许玩家自杀
-- `SimpleWarp`: 允许玩家设置 / 传送地标点 (可使用中文名)
+- `SimpleWarp`: 允许玩家设置、传送地标点 (可使用中文名)
 - `SimpleTpa`: 允许玩家使用 `/tpa [player]` 互相传送
 - `SimpleBack`: 允许玩家返回上一位置
 - `RecipeAdder`: 允许服务器管理员直接通过编辑 yml 文件来加载 / 修改自定义配方 (使用权限控制)
-- `MineBoard`: 挖掘榜 (可关闭)
+- `MineBoard`: 挖掘榜 (可关闭) ***(目前有 bug, 预计在 v0.0.5 修复)***
+- `SimpleHome`: 允许玩家设置家、回家 ***(目前有 bug, 预计在 v0.0.5 修复)***
 
 ## 待办 (TODOS)
+### 总体
 - 添加新的功能: `CuteLogin`
 - ~~修复 `Suicide` 的 Bug~~ **已修复**
 - ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **已修复**
 - ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **已修复**
+- 修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`
 - 修复 `MineBoard` 会出现两个第一名的问题
+- 修复 help 帮助的横线太长的问题
+- 优化一些代码
+- 添加新的功能: `AdvancementAdder`
+- 将 `AdvancementAdder` 迁移至 `AdvancementManager`
+### RecipeAdder
+- 将 `RecipeAdder` 迁移至 `RecipeManager`
+- 添加熔炉、高炉等合成
+### MineBoard
+- 修复两个第一的 bug
+- 修复玩家进入服务器没有计分板, 没有其他玩家数据的问题
+### SimpleHome
+- 修改存储 bin 为 .yml
+- 添加 /home 提示
 
 ## Wiki
 
@@ -46,7 +62,7 @@ recipe:
   - '#@#' # 可以用字母、数字、符号
   - '###' # 甚至可以用文字
 format:
-  '#': 'DIR' # 解释上面的符号代替的是什么物品
+  '#': 'DIRT' # 解释上面的符号代替的是什么物品
   '@': 'IRON_INGOT' # 也要英文大写
 ```
 #### 无序合成
