@@ -27,8 +27,7 @@
 - ~~修复 `Suicide` 的 Bug~~ **已修复**
 - ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **已修复**
 - ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **已修复**
-- 修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`
-- 修复 `MineBoard` 会出现两个第一名的问题
+- ~~修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`~~ **已修复**
 - 修复 help 帮助的横线太长的问题
 - 优化一些代码
 - 添加新的功能: `AdvancementAdder`
