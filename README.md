@@ -24,30 +24,31 @@
 ## 待办 (TODOS)
 ### 总体
 - 添加新的功能: `CuteLogin`
-- ~~修复 `Suicide` 的 Bug~~ **已修复**
-- ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **已修复**
-- ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **已修复**
-- ~~修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`~~ **已修复**
+- ~~修复 `Suicide` 的 Bug~~ **(已修复: v0.0.3)**
+- ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **(已修复: v0.0.3)**
+- ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **(已修复: v0.0.4)**
+- ~~修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`~~ **(已修复: v0.0.4-pre3)**
 - 修复 help 帮助的横线太长的问题
 - 优化一些代码
 - 添加新的功能: `AdvancementAdder`
+- 添加新的功能: `WebSocket`
+- 添加新的功能: `ColorMOTD`
+### AdvancementAdder
 - 将 `AdvancementAdder` 迁移至 `AdvancementManager`
 ### RecipeAdder
 - 将 `RecipeAdder` 迁移至 `RecipeManager`
 - 添加熔炉、高炉等合成
 ### MineBoard
 - 修复两个第一的 bug
-- 修复玩家进入服务器没有计分板, 没有其他玩家数据的问题
+- 修复玩家进入服务器有时候没有计分板, 需要手动破坏一个方块才能显示的问题
+- 修复玩家进入服务器没有其他玩家数据的问题
 ### SimpleHome
 - 修改存储 bin 为 .yml
 - 添加 /home 提示
 
 ## Wiki
-
 ### RecipeAdder
-
 **注意! 如果格式不规范将可能抛出 `NullPointerException`, 故请严格使用此格式!**
-
 #### 有序合成
 例子: [exampleRecipe.yml](https://github.com/WindLeaf233/WL-Kits/blob/cab50fbb44d10c1974c6a22de30cd5533a5340dd/src/main/resources/exampleRecipe.yml)
 
