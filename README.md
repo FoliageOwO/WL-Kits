@@ -23,13 +23,15 @@
 
 ## 待办 (TODOS)
 ### 总体
-- 添加新的功能: `CuteLogin`
 - ~~修复 `Suicide` 的 Bug~~ **(已修复: v0.0.3)**
 - ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **(已修复: v0.0.3)**
 - ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **(已修复: v0.0.4)**
 - ~~修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`~~ **(已修复: v0.0.4-pre3)**
 - 修复 help 帮助的横线太长的问题
+- 修改文件结构: `plugins/WL-Kits/plugin_name/plugin_file` -> `plugins/WL-kits/plugin_file`
 - 优化一些代码
+- 将所有的消息都移植到 `message.yml`
+- 添加新的功能: `Disenchant`
 - 添加新的功能: `AdvancementAdder`
 - 添加新的功能: `WebSocket`
 - 添加新的功能: `ColorMOTD`
