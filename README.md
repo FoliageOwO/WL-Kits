@@ -7,6 +7,18 @@
 
 一个使用 **Spigot API** 编写的适用于 **Minecraft 1.16.x `Spigot`** 的服务端集成小工具插件。
 
+## 目录
+- [目录](#目录)
+- [功能 (子插件)](#功能-子插件)
+- [待办 (TODOS)](#待办-TODOS)
+  - [总体](#总体)
+  - [AdvancementAdder](#AdvancementAdder)
+  - [RecipeAdder](#RecipeAdder)
+  - [MineBoard](#MineBoard)
+  - [SimpleHome](#SimpleHome)
+- [Wiki](#Wiki)
+  - [RecipeAdder](#RecipeAdder)
+
 ## 功能 (子插件)
 - `AntiCreeper`: 可以防止 `Creeper` 爆炸破坏地形, 但又不影响 `mobGriefing` 引起的一系列问题 (可关闭) (使用权限控制)
 - `JoinInfo`: 可以在玩家进入、离开服务器时向其他玩家、CONSOLE 发送对应消息
