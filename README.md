@@ -42,7 +42,10 @@
 - ~~修复 help 帮助的横线太长的问题~~ **(已修复: v0.0.5)**
 - ~~修改文件结构: `plugins/WL-Kits/plugin_name/plugin_file` -> `plugins/WL-kits/plugin_file`~~ **(已修改: v0.0.5)**
 - ~~将一些多余的空格参数删除~~ **(取消)**
-- 添加命令: `/wlkits plugins on/off/list`
+- ~~添加命令: `/wlkits plugins [name] on/off/check`~~ **(已添加: v0.0.5)**
+- 完善 `/wlkits plugins [name]` 的相关配置问题
+- 完善 `YmlConfig`
+- 去掉 `anticreeper`、`skipnight` 的命令, 直接用 `/wlkits plugins [name] on/off/check 管理`
 - 优化一些代码
 - 将所有的消息都移植到 `message.yml`
 - 添加新的功能: `Disenchant`
