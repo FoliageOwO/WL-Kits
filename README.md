@@ -10,14 +10,14 @@
 ## 目录
 - [目录](#目录)
 - [功能 (子插件)](#功能-子插件)
-- [待办 (TODOS)](#待办-TODOS)
+- [待办 (TODOS)](#待办-todos)
   - [总体](#总体)
-  - [AdvancementAdder](#AdvancementAdder)
-  - [RecipeAdder](#RecipeAdder)
-  - [MineBoard](#MineBoard)
-  - [SimpleHome](#SimpleHome)
-- [Wiki](#Wiki)
-  - [RecipeAdder](#RecipeAdder)
+  - [AdvancementAdder](#advancementadder)
+  - [RecipeAdder](#recipeadder)
+  - [MineBoard](#mineboard)
+  - [SimpleHome](#simplehome)
+- [Wiki](#wiki)
+  - [RecipeAdder](#recipeadder-1)
 
 ## 功能 (子插件)
 - `AntiCreeper`: 可以防止 `Creeper` 爆炸破坏地形, 但又不影响 `mobGriefing` 引起的一系列问题 (可关闭) (使用权限控制)
@@ -33,7 +33,7 @@
 - `MineBoard`: 挖掘榜 (可关闭) ***(目前有 bug, 预计在 v0.0.5 修复)***
 - `SimpleHome`: 允许玩家设置家、回家 ***(目前有 bug, 预计在 v0.0.5 修复)***
 
-## 待办 (TODOS)
+## 待办 (Todos)
 ### 总体
 - ~~修复 `Suicide` 的 Bug~~ **(已修复: v0.0.3)**
 - ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **(已修复: v0.0.3)**
