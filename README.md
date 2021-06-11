@@ -41,7 +41,8 @@
 - ~~修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`~~ **(已修复: v0.0.4-pre4)**
 - ~~修复 help 帮助的横线太长的问题~~ **(已修复: v0.0.5)**
 - ~~修改文件结构: `plugins/WL-Kits/plugin_name/plugin_file` -> `plugins/WL-kits/plugin_file`~~ **(已修改: v0.0.5)**
-- 将一些多余的空格参数删除
+- ~~将一些多余的空格参数删除~~ **(取消)**
+- 添加命令: `/wlkits plugins on/off/list`
 - 优化一些代码
 - 将所有的消息都移植到 `message.yml`
 - 添加新的功能: `Disenchant`
