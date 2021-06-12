@@ -46,7 +46,7 @@
 - ~~完善 `/wlkits plugins [name]` 的相关配置问题~~ **(已完善: v0.0.5)**
 - ~~完善 `YmlConfig`~~ **(已完善: v0.0.5)**
 - ~~去掉 `anticreeper`、`skipnight` 的命令, 直接用 `/wlkits plugins [name] on/off/check 管理`~~ **(已修改: v0.0.5)**
-- 优化一些代码
+- ~~优化一些代码~~ **(取消)**
 - ~~将所有的消息都移植到 `message.yml`~~ **(已迁移： v0.0.5)**
 - 添加新的功能: `Disenchant`
 - 添加新的功能: `AdvancementAdder`
