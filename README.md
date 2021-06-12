@@ -43,11 +43,11 @@
 - ~~修改文件结构: `plugins/WL-Kits/plugin_name/plugin_file` -> `plugins/WL-kits/plugin_file`~~ **(已修改: v0.0.5)**
 - ~~将一些多余的空格参数删除~~ **(取消)**
 - ~~添加命令: `/wlkits plugins [name] on/off/check`~~ **(已添加: v0.0.5)**
-- 完善 `/wlkits plugins [name]` 的相关配置问题
-- 完善 `YmlConfig`
-- 去掉 `anticreeper`、`skipnight` 的命令, 直接用 `/wlkits plugins [name] on/off/check 管理`
+- ~~完善 `/wlkits plugins [name]` 的相关配置问题~~ **(已完善: v0.0.5)**
+- ~~完善 `YmlConfig`~~ **(已完善: v0.0.5)**
+- ~~去掉 `anticreeper`、`skipnight` 的命令, 直接用 `/wlkits plugins [name] on/off/check 管理`~~ **(已修改: v0.0.5)**
 - 优化一些代码
-- 将所有的消息都移植到 `message.yml`
+- ~~将所有的消息都移植到 `message.yml`~~ **(已迁移： v0.0.5)**
 - 添加新的功能: `Disenchant`
 - 添加新的功能: `AdvancementAdder`
 - 添加新的功能: `WebSocket`
@@ -62,8 +62,8 @@
 - 修复玩家进入服务器有时候没有计分板, 需要手动破坏一个方块才能显示的问题
 - 修复玩家进入服务器没有其他玩家数据的问题
 ### SimpleHome
-- 修改存储 bin 为 .yml
-- 添加 /home 提示
+- ~~修改存储 bin 为 .yml~~ **(取消)**
+- ~~添加 /home 提示~~ **(已添加: v0.0.5)**
 
 ## Wiki
 ### RecipeAdder
