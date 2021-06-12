@@ -32,6 +32,7 @@
 - `RecipeAdder`: 允许服务器管理员直接通过编辑 yml 文件来加载 / 修改自定义配方 (使用权限控制)
 - `MineBoard`: 挖掘榜 (可关闭) ***(目前有 bug, 预计在 v0.0.5 修复)***
 - `SimpleHome`: 允许玩家设置家、回家 ***(目前有 bug, 预计在 v0.0.5 修复)***
+- `Disenchant`: 允许玩家可以将物品上的附魔转移到附魔书上
 
 ## 待办 (Todos)
 ### 总体
@@ -47,8 +48,8 @@
 - ~~完善 `YmlConfig`~~ **(已完善: v0.0.5)**
 - ~~去掉 `anticreeper`、`skipnight` 的命令, 直接用 `/wlkits plugins [name] on/off/check 管理`~~ **(已修改: v0.0.5)**
 - ~~优化一些代码~~ **(取消)**
-- ~~将所有的消息都移植到 `message.yml`~~ **(已迁移： v0.0.5)**
-- 添加新的功能: `Disenchant`
+- ~~将所有的消息都移植到 `message.yml`~~ **(已迁移: v0.0.5)**
+- ~~添加新的功能: `Disenchant`~~ **(已添加: v0.0.5)**
 - 添加新的功能: `AdvancementAdder`
 - 添加新的功能: `WebSocket`
 - 添加新的功能: `ColorMOTD`
