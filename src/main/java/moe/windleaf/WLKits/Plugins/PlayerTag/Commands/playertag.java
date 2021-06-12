@@ -1,5 +1,6 @@
 package moe.windleaf.WLKits.Plugins.PlayerTag.Commands;
 
+import moe.windleaf.WLKits.MessageGetter;
 import moe.windleaf.WLKits.Plugins.PlayerTag.PlayerTag;
 import moe.windleaf.WLKits.Utils;
 import org.bukkit.Bukkit;
@@ -14,12 +15,20 @@ import java.util.stream.Collectors;
 
 public class playertag implements CommandExecutor, TabCompleter {
     public static HashMap<String, String> playerTags = PlayerTag.playerTags;
+    MessageGetter m = new MessageGetter("PlayerTag");
+
+    private HashMap<String, String> initMap(String name, String tag) {
+        HashMap<String, String> i = new HashMap<>();
+        i.put("playerName", name);
+        i.put("tag", Utils.formatColor(tag));
+        return i;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.hasPermission("wlkits.command.playertag")) {
             if (args.length == 0) {
-                Utils.smartSendPrefix(sender, "&a使用 &6/playertag help &a查看帮助!", "PlayerTag");
+                Utils.smartSendPrefix(sender, m.get("帮助"), "PlayerTag");
             } else {
                 switch (args[0]) {
                     case "help":
@@ -41,7 +50,7 @@ public class playertag implements CommandExecutor, TabCompleter {
                             if (player == null) { noPlayer(sender, args[1]); } else {
                                 playerTags.put(Utils.getUUIDString(player), Utils.formatColor(args[2]) + " ");
                                 Utils.saveHashMap(playerTags, PlayerTag.path);
-                                Utils.sendPrefix(sender, "&a成功将玩家 &6" + player.getName() + " &a的称号设置为 \"" + Utils.formatColor(args[2]) + "&a\".");
+                                Utils.sendPrefix(sender, Utils.insert(m.get("设置成功"), initMap(player.getName(), args[2])));
                                 return true;
                             }
                         }
@@ -56,7 +65,7 @@ public class playertag implements CommandExecutor, TabCompleter {
                             if (player == null) { noPlayer(sender, args[1]); } else {
                                 playerTags.remove(Utils.getUUIDString(player));
                                 Utils.saveHashMap(playerTags, PlayerTag.path);
-                                Utils.sendPrefix(sender, "&a成功删除玩家 &6" + player.getName() + " &a的称号!");
+                                Utils.sendPrefix(sender, Utils.insert(m.get("删除成功"), initMap(player.getName(), "")));
                                 return true;
                             }
                         }
@@ -72,7 +81,7 @@ public class playertag implements CommandExecutor, TabCompleter {
                                 String tag = playerTags.get(Utils.getUUIDString(player));
                                 if (tag == null) { noTag(sender, player.getName()); } else if (tag.equals("")){ noTag(sender, player.getName());
                                 } else {
-                                    Utils.sendPrefix(sender, "&a玩家 &6" + player.getName() + " &a的称号为: \"&r" + tag.trim() + "&a\".");
+                                    Utils.sendPrefix(sender, Utils.insert(m.get("查询称号"), initMap(player.getName(), args[2])));
                                 }
                                 return true;
                             }
@@ -89,7 +98,7 @@ public class playertag implements CommandExecutor, TabCompleter {
                                 playerTags.remove(Utils.getUUIDString(player));
                                 player.setDisplayName(player.getName());
                                 Utils.saveHashMap(playerTags, PlayerTag.path);
-                                Utils.sendPrefix(sender, "&a玩家 &6" + player.getName() + " &a称号 | 名称重置成功!");
+                                Utils.sendPrefix(sender, Utils.insert(m.get("重置成功"), initMap(player.getName(), "")));
                             }
                             return true;
                         }
@@ -105,11 +114,16 @@ public class playertag implements CommandExecutor, TabCompleter {
     }
 
     public void noTag(CommandSender sender, String name) {
-        Utils.sendPrefix(sender, "&c玩家 &6" + name + " &c没有称号!");
+        HashMap<String, String> i = new HashMap<>();
+        i.put("playerName", name);
+        Utils.sendPrefix(sender, Utils.insert(m.get("没有称号"), i));
+
     }
 
     public void noPlayer(CommandSender sender, String name) {
-        Utils.sendPrefix(sender, "&c玩家 &6" + name + " &c不存在!");
+        HashMap<String, String> i = new HashMap<>();
+        i.put("playerName", name);
+        Utils.sendPrefix(sender, Utils.insert(m.get("玩家不存在"), i));
     }
 
     @Override

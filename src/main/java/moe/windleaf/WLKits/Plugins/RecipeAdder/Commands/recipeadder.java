@@ -44,7 +44,7 @@ public class recipeadder implements CommandExecutor, TabCompleter {
                     RecipeAdder.recipeManager.listRecipe(sender);
                     break;
                 default:
-                    Utils.smartSendPrefix(sender, "&a使用 &6/recipeadder help &a查看帮助!", "Recipeadder");
+                    Utils.smartSendPrefix(sender, RecipeAdder.m.get("帮助"), "Recipeadder");
                     break;
             }
             return true;

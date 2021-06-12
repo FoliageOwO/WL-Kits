@@ -8,12 +8,11 @@ import moe.windleaf.WLKits.Plugins.SimpleHome.Commands.sethome;
 import moe.windleaf.WLKits.Utils;
 import org.bukkit.Location;
 
-import java.io.File;
 import java.util.HashMap;
 
 public class SimpleHome {
-    public static String path = Main.prefixPath + "SimpleHome" + File.separator + "homes.bin";
-    @SuppressWarnings("unchecked") public static HashMap<String, Location> homes = (HashMap<String, Location>) Utils.loadHashMap(path);
+    public static String path = Main.prefixPath + "Homes.bin";
+    @SuppressWarnings("unchecked") public static HashMap<String, String> homes = (HashMap<String, String>) Utils.loadHashMap(path);
 
     public static void load() {
         Utils.commandRegister("sethome", new sethome());

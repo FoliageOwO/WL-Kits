@@ -66,22 +66,23 @@ commands:
 
   wlkits:
     description: 'WL-Kits 命令'
+    permission: 'wlkits.command.wlkits'
 
   back:
     description: '返回上一位置'
-    permission: wlkits.command.back
+    permission: 'wlkits.command.back'
 
   recipeadder:
     aliases:
       - 'ra'
     description: '配方管理'
-    permission: wlkits.command.recipeadder
+    permission: 'wlkits.command.recipeadder'
 
   mineboard:
     aliases:
       - 'mb'
     description: '挖掘榜设置'
-    permission: wlkits.command.mineboard
+    permission: 'wlkits.command.mineboard'
 
   sethome:
     aliases:
@@ -120,6 +121,10 @@ permissions:
       - wlkits.command.anticreeper
       - wlkits.command.playertag
       - wlkits.command.skipnight
+      - wlkits.command.wlkits
+      - wlkits.command.back
+      - wlkits.command.recipeadder
+      - wlkits.command.mineboard
 
   wlkits.command.anticreeper:
     default: op
@@ -134,4 +139,10 @@ permissions:
     default: true
 
   wlkits.command.mineboard:
+    default: op
+
+  wlkits.command.recipeadder:
+    default: op
+
+  wlkits.command.wlkits:
     default: op

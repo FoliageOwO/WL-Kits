@@ -4,10 +4,8 @@ import moe.windleaf.WLKits.Main;
 import moe.windleaf.WLKits.Plugins.SimpleWarp.Commands.*;
 import moe.windleaf.WLKits.Utils;
 
-import java.io.File;
-
 public class SimpleWarp {
-    public static String path = Main.prefixPath + "SimpleWarp" + File.separator + "warps.yml";
+    public static String path = Main.prefixPath  + "Warps.yml";
     public static final WarpManager warpManager = new WarpManager();
 
     public static void load() {

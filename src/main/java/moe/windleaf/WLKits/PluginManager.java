@@ -1,6 +1,7 @@
 package moe.windleaf.WLKits;
 
 import moe.windleaf.WLKits.Plugins.AntiCreeper.AntiCreeper;
+import moe.windleaf.WLKits.Plugins.Disenchant.Disenchant;
 import moe.windleaf.WLKits.Plugins.JoinInfo.JoinInfo;
 import moe.windleaf.WLKits.Plugins.BackDeath.BackDeath;
 import moe.windleaf.WLKits.Plugins.MineBoard.MineBoard;
@@ -32,6 +33,15 @@ public class PluginManager {
         plugins.add("RecipeAdder");
         plugins.add("MineBoard");
         plugins.add("SimpleHome");
+        plugins.add("Disenchant");
+        return plugins;
+    }
+
+    public static ArrayList<String> getMPlugins() {
+        ArrayList<String> plugins = new ArrayList<>();
+        plugins.add("AntiCreeper");
+        plugins.add("SkipNight");
+        plugins.add("Disenchant");
         return plugins;
     }
 
@@ -48,5 +58,6 @@ public class PluginManager {
         RecipeAdder.load();
         MineBoard.load();
         SimpleHome.load();
+        Disenchant.load();
     }
 }

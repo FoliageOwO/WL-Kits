@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerBedEnterEvent;
 public class Events implements Listener {
     @EventHandler
     public void _PlayerBedEnterEvent(PlayerBedEnterEvent event) {
-        if (Main.I.config.getBoolean("enable-skipnight")) {
+        if (Main.config().getBoolean("enable-skipnight")) {
             World world = event.getPlayer().getWorld();
             world.setTime(100);
             String prefix = Utils.getPluginPrefix("SkipNight");

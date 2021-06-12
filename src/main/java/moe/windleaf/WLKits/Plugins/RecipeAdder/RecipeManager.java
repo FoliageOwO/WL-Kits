@@ -18,14 +18,16 @@ import java.io.IOException;
 import java.util.*;
 
 public class RecipeManager {
-    public String binPath = Main.prefixPath + "RecipeAdder" + File.separator + "loadedRecipes.bin";
+    public String binPath = Main.prefixPath + "LoadedRecipes.bin";
     public HashMap<String, String> charFormat = new HashMap<>();
     @SuppressWarnings("unchecked") public HashMap<String, String> loadedRecipes = (HashMap<String, String>) Utils.loadHashMap(binPath);
     public FileConfiguration recipeConfiguration = new YamlConfiguration();
 
     public void loadRecipe(CommandSender player, String name) {
         if (loadedRecipes.containsKey(name)) {
-            Utils.smartSendPrefix(player, String.format("&c配方 &6%s &c已加载!", name), "RecipeAdder");
+            HashMap<String, String> i = new HashMap<>();
+            i.put("name", name);
+            Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("已加载"), i), "RecipeAdder");
         } else {
             String path = RecipeAdder.prefixPath + File.separator + name + ".yml";
             File recipeFile = new File(path);
@@ -72,15 +74,21 @@ public class RecipeManager {
                         try {
                             shapedRecipe.setIngredient(getKeyByValue(charFormat, i).charAt(0), Objects.requireNonNull(Material.getMaterial(i)));
                         } catch (NullPointerException e) {
-                            cannotLoad(player, String.format("&7未知的物品: &6%s&7!", i));
+                            HashMap<String, String> z = new HashMap<>();
+                            z.put("itemName", i);
+                            Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("未知的物品"), z), "RecipeAdder");
                             return;
                         }
                         charFormat.remove(i);
                     }
                     Bukkit.addRecipe(shapedRecipe);
                     loadedRecipes.put(name, name);
-                    Utils.smartSendPrefix(player, String.format("&a成功加载配方 &6%s.yml&a!", name), "RecipeAdder");
-                    Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("RecipeAdder") + String.format("&a玩家 &6%s &a加载了一个自定义有序配方: &7%s&a.", player.getName(), name));
+
+                    HashMap<String, String> i = new HashMap<>();
+                    i.put("playerName", player.getName());
+                    i.put("name", name);
+                    Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("加载成功"), i), "RecipeAdder");
+                    Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("RecipeAdder") + Utils.insert(RecipeAdder.m.get("广播-加载"), i));
                 } else {
                     // 无序合成 (ShapelessRecipe)
 
@@ -99,31 +107,43 @@ public class RecipeManager {
                                     recipeConfiguration.getInt("count." + i),
                                     Objects.requireNonNull(Material.getMaterial(i)));
                         } catch (NullPointerException e) {
-                            cannotLoad(player, String.format("&7未知的物品: &6%s&7!", i));
+                            HashMap<String, String> z = new HashMap<>();
+                            z.put("itemName", i);
+                            Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("未知的物品"), z), "RecipeAdder");
                             return;
                         }
                     }
                     Bukkit.addRecipe(shapelessRecipe);
                     loadedRecipes.put(name, name);
-                    Utils.smartSendPrefix(player, String.format("&a成功加载配方 &6%s.yml&a!", name), "RecipeAdder");
-                    Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("RecipeAdder") + String.format("&a玩家 &6%s &a加载了一个自定义无序配方: &7%s&a.", player.getName(), name));
+
+                    HashMap<String, String> i = new HashMap<>();
+                    i.put("playerName", player.getName());
+                    i.put("name", name);
+                    Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("加载成功"), i), "RecipeAdder");
+                    Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("RecipeAdder") + Utils.insert(RecipeAdder.m.get("广播-加载"), i));
                 }
                 Utils.saveHashMap(loadedRecipes, binPath);
             } catch (IOException | InvalidConfigurationException | NullPointerException e) {
-                Utils.smartSendPrefix(player, String.format("&c导入配方配置文件 &6%s.yml &c失败: &c&l %s", name, e.getClass().getName()), "RecipeAdder");
+                HashMap<String, String> z = new HashMap<>();
+                z.put("name", name);
+                z.put("exceptionName", e.getClass().getName());
+                Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("错误"), z), "RecipeAdder");
                 e.printStackTrace();
             }
         }
     }
 
     public void removeRecipe(CommandSender player, String name) {
+        HashMap<String, String> i = new HashMap<>();
+        i.put("playerName", player.getName());
+        i.put("name", name);
         if (loadedRecipes.containsKey(name)) {
             loadedRecipes.remove(name);
             Bukkit.removeRecipe(new NamespacedKey(Main.I, name));
-            Utils.smartSendPrefix(player, String.format("&a删除配方 &6%s &a成功!", name), "RecipeAdder");
-            Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("RecipeAdder") + String.format("&c玩家 &6%s &c删除了配方: &7%s&c.", player.getName(), name));
+            Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("删除成功"), i), "RecipeAdder");
+            Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("RecipeAdder") + Utils.insert(RecipeAdder.m.get("广播-删除"), i));
         } else {
-            Utils.smartSendPrefix(player, String.format("&c配方 &6%s &c不存在!", name), "RecipeAdder");
+            Utils.smartSendPrefix(player, Utils.insert(RecipeAdder.m.get("配方不存在"), i), "RecipeAdder");
         }
     }
 
@@ -131,12 +151,8 @@ public class RecipeManager {
         if (loadedRecipes.size() > 0) {
             Utils.smartSendPrefix(player, "&a" + loadedRecipes.keySet(), "RecipeAdder");
         } else {
-            Utils.smartSendPrefix(player, "&a没有配方被加载, 快去自定义一个配方吧!", "RecipeAdder");
+            Utils.smartSendPrefix(player, RecipeAdder.m.get("没有配方"), "RecipeAdder");
         }
-    }
-
-    private void cannotLoad(CommandSender sender, String reason) {
-        Utils.smartSendPrefix(sender, String.format("&c加载配方失败, 原因: &7%s", reason), "RecipeAdder");
     }
 
     public String getKeyByValue(Map<?, ?> map, String value) {

@@ -1,3 +1,4 @@
 enable-anticreeper: true
 enable-skipnight: true
 enable-mineboard: true
+enable-disenchant: true

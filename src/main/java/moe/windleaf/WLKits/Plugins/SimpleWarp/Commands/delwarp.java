@@ -1,5 +1,6 @@
 package moe.windleaf.WLKits.Plugins.SimpleWarp.Commands;
 
+import moe.windleaf.WLKits.MessageGetter;
 import moe.windleaf.WLKits.Plugins.SimpleWarp.SimpleWarp;
 import moe.windleaf.WLKits.Utils;
 import org.bukkit.command.Command;
@@ -9,22 +10,28 @@ import org.bukkit.command.TabCompleter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class delwarp implements CommandExecutor, TabCompleter {
+    MessageGetter m = new MessageGetter("SimpleWarp");
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 1) {
             Utils.invalidArgs(sender, "/warphelp", "SimpleWarp");
             return false;
         } else {
+            HashMap<String, String> i = new HashMap<>();
+            i.put("name", args[0]);
+            i.put("playerName", sender.getName());
             if (SimpleWarp.warpManager.warps.getKeys(false).contains(args[0])) {
                 SimpleWarp.warpManager.warps.set(args[0], null);
-                Utils.smartSendPrefix(sender, String.format("&a成功删除地标 &6%s &a!", args[0]), "SimpleWarp");
-                Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("SimpleWarp") + String.format("&c玩家 &6%s &c删除了地标点 &9%s&c!", sender.getName(), args[0]));
+                Utils.smartSendPrefix(sender, Utils.insert(m.get("删除"), i), "SimpleWarp");
+                Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("SimpleWarp") + Utils.insert(m.get("广播"), i));
             } else {
-                Utils.smartSendPrefix(sender, String.format("&c地标 &6%s &c不存在!", args[0]), "SimpleWarp");
+                Utils.smartSendPrefix(sender, Utils.insert(m.get("不存在"), i), "SimpleWarp");
             }
             return true;
         }

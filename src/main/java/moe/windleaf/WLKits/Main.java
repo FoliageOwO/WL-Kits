@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Map;
 
 /*
          ___       __       ___                          ___  __        ___      _________    ________
@@ -27,8 +28,9 @@ public final class Main extends JavaPlugin {
     public String name = "WL-Kits";
     public String prefix = Utils.getPrefix(name);
     public org.bukkit.plugin.PluginManager pluginManager = getServer().getPluginManager();
-    public FileConfiguration config;
     public static String prefixPath = Utils.getPath() + "plugins" + File.separator + "WL-Kits" + File.separator;
+    public static Map<String, Object> messages;
+    public static YmlConfig configYml;
 
     @Override
     public void onEnable() {
@@ -45,13 +47,17 @@ public final class Main extends JavaPlugin {
         Utils.logInfo("&f-------------------------------------------------------");
 
         // 配置文件
-        config = getConfig();
-        config.options().copyDefaults();
-        saveDefaultConfig();
+        smartSaveResource("config.yml");
+        smartSaveResource("messages.yml");
+        configYml = new YmlConfig(prefixPath + "config.yml");
+        messages = new YmlConfig(prefixPath + "messages.yml").ob;
 
         // pluginManager 初始化
         PluginManager pluginManager = new PluginManager();
         pluginManager.load();
+
+        // wlkits 命令初始化
+        wlkits.load();
 
         // 依次加载子插件
         ArrayList<String> plugins = PluginManager.getPlugins();
@@ -64,12 +70,20 @@ public final class Main extends JavaPlugin {
         long endTime = System.currentTimeMillis();
 
         // 显示加载完成
-        Utils.logInfo("&f加载完成, 用时 &e" + (endTime - startTime) + "ms&f!");
+        Utils.logInfoPrefix("&f加载完成, 用时 &e" + (endTime - startTime) + "ms&f!");
     }
 
     @Override
     public void onDisable() {
         Bukkit.removeRecipe(new NamespacedKey(this, "wlkits_recipes"));
         Utils.logInfo("&f已卸载!");
+    }
+
+    public static FileConfiguration config() {
+        return I.getConfig();
+    }
+
+    public static void smartSaveResource(String name) {
+        if (!(new File(prefixPath + name).exists())) { I.saveResource(name, false); }
     }
 }

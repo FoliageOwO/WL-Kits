@@ -13,7 +13,7 @@ public class Events implements Listener{
 
     @EventHandler
     public void _EntityExplodeEvent(EntityExplodeEvent event) {
-        if (Main.I.config.getBoolean("enable-anticreeper")) {
+        if (Main.config().getBoolean("enable-anticreeper")) {
             if (event.getEntity() instanceof Creeper) {
                 Location location = event.getLocation();
                 event.setCancelled(true);

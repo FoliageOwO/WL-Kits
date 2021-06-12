@@ -5,13 +5,16 @@ import moe.windleaf.WLKits.Plugins.MineBoard.Commands.mineboard;
 import moe.windleaf.WLKits.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.scoreboard.*;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
 
-import java.io.File;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class MineBoard {
-    public static String path = Main.prefixPath + "MineBoard" + File.separator + "boardScores.bin";
+    public static String path = Main.prefixPath + "MineBoardScores.bin";
     @SuppressWarnings("unchecked") public static HashMap<String, Integer> scores = (HashMap<String, Integer>) Utils.loadHashMap(path);
     public static ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
     @SuppressWarnings("all") public static Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
@@ -19,7 +22,7 @@ public class MineBoard {
 
     public static void load() {
         Utils.makeDir(Main.prefixPath + "MineBoard");
-        if (Main.I.config.getBoolean("enable-mineboard")) { register(); }
+        if (Main.config().getBoolean("enable-mineboard")) { register(); }
         Utils.eventRegister(new Events());
         Utils.commandRegister("mineboard", new mineboard());
     }

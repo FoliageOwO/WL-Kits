@@ -11,6 +11,8 @@ import java.io.*;
 import java.util.*;
 
 public class Utils {
+    static MessageGetter m = new MessageGetter("Utils");
+
     public static void send(CommandSender sender, String string) { sender.sendMessage(formatColor(string)); }
 
     public static void send(Player player, String string) { player.sendMessage(formatColor(string)); }
@@ -51,22 +53,22 @@ public class Utils {
         }
     }
 
-    public static void doNotHavePermission(CommandSender sender) { sendPrefix(sender, "&c你没有使用该命令的权限!"); }
+    public static void doNotHavePermission(CommandSender sender) { sendPrefix(sender, m.get("没有权限")); }
 
     @SuppressWarnings("unused")
-    public static void doNotHavePermission(Player player) { sendPrefix(player, "&c你没有使用该命令的权限!"); }
+    public static void doNotHavePermission(Player player) { sendPrefix(player, m.get("没有权限")); }
 
     @SuppressWarnings("unused")
     public static void invalidArgs(Player player, String usage, String name) {
-        String prefix;
-        if (!name.equals("")) { prefix = getPluginPrefix(name); } else { prefix = getPrefix("WL-Kits"); }
-        send(player, prefix + String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage));
+        invalidArgs((CommandSender) player, usage, name);
     }
 
     public static void invalidArgs(CommandSender sender, String usage, String name) {
         String prefix;
         if (!name.equals("")) { prefix = getPluginPrefix(name); } else { prefix = getPrefix("WL-Kits"); }
-        send(sender, prefix + String.format("&c错误的参数, 使用 &6%s &c查看帮助!", usage));
+        HashMap<String, String> i = new HashMap<>();
+        i.put("usage", usage);
+        send(sender, prefix + insert(m.get("参数错误"), i));
     }
 
     public static boolean hasCommandPermission(CommandSender sender, String name) { return sender.hasPermission("wlkits.command." + name); }
@@ -107,13 +109,13 @@ public class Utils {
     @SuppressWarnings("unused")
     public static void hyphen(Player player) { Utils.send(player, "&f-----------------------------------------------"); }
 
+    @SuppressWarnings("unused")
     public static void hyphen(CommandSender sender) { Utils.send(sender, "&f-----------------------------------------------"); }
 
     private static void _sendHelp(CommandSender sender, Map<String, String> helps) {
-        hyphen(sender);
+        // hyphen(sender);
         for (String i : helps.keySet()) { Utils.send(sender, String.format("&8» &6%s &f: &a%s"
-                        .replace("|", "&2|&6")
-                , i, helps.get(i))); }
+                , i, helps.get(i)).replace("|", "&2|&6")); }
     }
 
     public static String formatColor(String string) { return string.replace("&", "§"); }
@@ -182,7 +184,7 @@ public class Utils {
     }
 
     public static void mustPlayer(CommandSender sender, String name) {
-        send(sender, getPluginPrefix(name) + "&c只有玩家才能这样做!");
+        send(sender, getPluginPrefix(name) + m.get("玩家使用"));
     }
 
     @SuppressWarnings("unused")
@@ -197,5 +199,20 @@ public class Utils {
         } else {
             send(sender, getPluginPrefix(name) + string);
         }
+    }
+
+    @SuppressWarnings("unused")
+    public static String getKeyByValue(Map<?, ?> map, Object value) {
+        Set<?> keys = map.keySet();
+        for (Object i : keys) { if (map.get(i) == value) { return i.toString(); } }
+        return null;
+    }
+
+    public static String insert(String string, Map<String, String> insertMap) {
+        String a = string;
+        for (String i : insertMap.keySet()) {
+            a = a.replace("{" + i + "}", insertMap.get(i));
+        }
+        return a;
     }
 }

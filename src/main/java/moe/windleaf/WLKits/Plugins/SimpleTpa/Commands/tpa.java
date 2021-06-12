@@ -27,7 +27,7 @@ public class tpa implements CommandExecutor, TabCompleter {
             } else {
                 Player player = Bukkit.getPlayer(args[0]);
                 if (player == sender) {
-                    Utils.sendPrefix(sender, "&c你不能给自己发送传送请求!");
+                    Utils.smartSendPrefix(sender, "&c你不能给自己发送传送请求!", "SimpleTpa");
                     return false;
                 } else {
                     if (player == null) {
