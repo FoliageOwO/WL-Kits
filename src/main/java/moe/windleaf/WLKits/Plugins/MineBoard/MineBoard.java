@@ -11,7 +11,6 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.util.HashMap;
-import java.util.TreeMap;
 
 public class MineBoard {
     public static String path = Main.prefixPath + "MineBoardScores.bin";
@@ -28,11 +27,13 @@ public class MineBoard {
     }
 
     public static void register() {
-        objective = scoreboard.registerNewObjective(
-                "mineboard",
-                "dummy",
-                ChatColor.GOLD + "" + ChatColor.BOLD + "挖掘榜");
-        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        if (scoreboard.getObjective("mineboard") == null) {
+            objective = scoreboard.registerNewObjective(
+                    "mineboard",
+                    "dummy",
+                    ChatColor.GOLD + "" + ChatColor.BOLD + "挖掘榜");
+            objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        }
     }
 
     public static void unload() {

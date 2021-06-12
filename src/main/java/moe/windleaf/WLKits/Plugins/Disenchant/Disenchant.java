@@ -94,7 +94,7 @@ public class Disenchant {
         disenchantBook.setItemMeta(bookMeta);
 
         // 附魔书配方
-        ShapedRecipe disenchantBookRecipe = new ShapedRecipe(new NamespacedKey(Main.I, "disenchantmentBook"), disenchantBook);
+        ShapedRecipe disenchantBookRecipe = new ShapedRecipe(new NamespacedKey(Main.I, "disenchantmentbook"), disenchantBook);
         disenchantBookRecipe.shape("###", "#@#", "###");
         disenchantBookRecipe.setIngredient('#', Material.GLOWSTONE_DUST);
         disenchantBookRecipe.setIngredient('@', Material.BOOK);

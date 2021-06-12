@@ -1,6 +1,7 @@
 package moe.windleaf.WLKits;
 
 import moe.windleaf.WLKits.Commands.wlkits;
+import moe.windleaf.WLKits.Plugins.RecipeAdder.RecipeAdder;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -75,7 +76,8 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        Bukkit.removeRecipe(new NamespacedKey(this, "wlkits_recipes"));
+        for (String i : RecipeAdder.recipeManager.loadedRecipes.keySet()) { Bukkit.removeRecipe(new NamespacedKey(this, i)); }
+        Bukkit.removeRecipe(new NamespacedKey(this, "disenchantmentbook"));
         Utils.logInfo("&f已卸载!");
     }
 
