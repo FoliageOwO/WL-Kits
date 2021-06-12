@@ -1,9 +1,9 @@
 # WL-Kits
 [![使用 Spigot-API](https://img.shields.io/badge/使用-Spigot%20API-green)](https://hub.spigotmc.org/javadocs/bukkit/)
 [![使用 Maven](https://img.shields.io/badge/使用-Maven-blue)](https://hub.spigotmc.org/javadocs/bukkit/)
-![当前版本](https://img.shields.io/badge/当前版本-0.0.4%20pre3-orange)
+![当前版本](https://img.shields.io/badge/当前版本-0.0.5-orange)
 [![使用 IDE](https://img.shields.io/badge/使用%20IDE-JetBrains%20IntelliJ%20IDEA-red)](https://www.jetbrains.com/idea/)
-![完成进度](https://img.shields.io/badge/完成进度-14%25-red)
+![完成进度](https://img.shields.io/badge/完成进度-20%25-red)
 
 一个使用 **Spigot API** 编写的适用于 **Minecraft 1.16.x `Spigot`** 的服务端集成小工具插件。
 
@@ -30,8 +30,8 @@
 - `SimpleTpa`: 允许玩家使用 `/tpa [player]` 互相传送
 - `SimpleBack`: 允许玩家返回上一位置
 - `RecipeAdder`: 允许服务器管理员直接通过编辑 yml 文件来加载 / 修改自定义配方 (使用权限控制)
-- `MineBoard`: 挖掘榜 (可关闭) ***(目前有 bug, 预计在 v0.0.5 修复)***
-- `SimpleHome`: 允许玩家设置家、回家 ***(目前有 bug, 预计在 v0.0.5 修复)***
+- `MineBoard`: 挖掘榜 (可关闭)
+- `SimpleHome`: 允许玩家设置家、回家
 - `Disenchant`: 允许玩家可以将物品上的附魔转移到附魔书上
 
 ## 待办 (Todos)
@@ -51,7 +51,7 @@
 - ~~将所有的消息都移植到 `message.yml`~~ **(已迁移: v0.0.5)**
 - ~~添加新的功能: `Disenchant`~~ **(已添加: v0.0.5)**
 - 添加新的功能: `AdvancementAdder`
-- 添加新的功能: `WebSocket`
+- ~~添加新的功能: `WebSocket`~~ **(取消)**
 - 添加新的功能: `ColorMOTD`
 ### AdvancementAdder
 - 将 `AdvancementAdder` 迁移至 `AdvancementManager`
@@ -59,9 +59,9 @@
 - 将 `RecipeAdder` 迁移至 `RecipeManager`
 - 添加熔炉、高炉等合成
 ### MineBoard
-- 修复两个第一的 bug
-- 修复玩家进入服务器有时候没有计分板, 需要手动破坏一个方块才能显示的问题
-- 修复玩家进入服务器没有其他玩家数据的问题
+- ~~修复两个第一的 bug~~ **(已修复: v0.0.5)**
+- ~~修复玩家进入服务器有时候没有计分板, 需要手动破坏一个方块才能显示的问题~~ **(已修复: v0.0.5)**
+- ~~修复玩家进入服务器没有其他玩家数据的问题~~ **(已修复: v0.0.5)**
 ### SimpleHome
 - ~~修改存储 bin 为 .yml~~ **(取消)**
 - ~~添加 /home 提示~~ **(已添加: v0.0.5)**
