@@ -37,7 +37,7 @@ public final class Main extends JavaPlugin {
         // 相关初始化
         I = this;
         long startTime = System.currentTimeMillis();
-        version = "0.0.4-pre4";
+        version = "0.0.5";
 
         // 显示 WL-Kits 相关的信息
 
