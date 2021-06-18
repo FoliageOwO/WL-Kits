@@ -5,7 +5,7 @@
 [![使用 IDE](https://img.shields.io/badge/使用%20IDE-JetBrains%20IntelliJ%20IDEA-red)](https://www.jetbrains.com/idea/)
 ![完成进度](https://img.shields.io/badge/完成进度-20%25-red)
 
-一个使用 **Spigot API** 编写的适用于 **Minecraft 1.16.x `Spigot`** 的服务端集成小工具插件。
+一个使用 **Spigot API** 编写的适用于 **Minecraft 1.16.x `Paper/Spigot`** 的服务端集成小工具插件。
 
 ## 目录
 - [目录](#目录)
