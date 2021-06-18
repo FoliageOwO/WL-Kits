@@ -35,7 +35,7 @@
 - ~~修复 `Suicide` 的 Bug~~ **(已修复: v0.0.3)**
 - ~~修复 `SimpleTpa` 中 Bug: `tpa 后重复 /tpaccept 会一直将对方 tp 过来`~~ **(已修复: v0.0.3)**
 - ~~修复 `MineBoard` 引发的一系列 `NullPointerException` 的 bug~~ **(已修复: v0.0.4)**
-- ~~修复 *README.md*、*exampleRecipe.yml* 中拼写问题: `DIR` -> `DIRT`~~ **(已修复: v0.0.4-pre4)**
+- ~~修复 *README.md*、*exampleRecipe.yml* 中的 **typo**: `DIR` -> `DIRT`~~ **(已修复: v0.0.4-pre4)**
 - ~~修复 help 帮助的横线太长的问题~~ **(已修复: v0.0.5)**
 - ~~修改文件结构: `plugins/WL-Kits/plugin_name/plugin_file` -> `plugins/WL-kits/plugin_file`~~ **(已修改: v0.0.5)**
 - ~~将一些多余的空格参数删除~~ **(取消)**
