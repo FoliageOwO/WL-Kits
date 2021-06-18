@@ -12,7 +12,6 @@ public class PlayerTag {
 
     @SuppressWarnings("unchecked")
     public static void load() {
-        Utils.makeDir(Main.prefixPath + "PlayerTag");
         playerTags = (HashMap<String, String>) Utils.loadHashMap(path);
         Utils.eventRegister(new Events());
         Utils.commandCRegister("playertag", new playertag());

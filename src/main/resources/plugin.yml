@@ -49,6 +49,9 @@ commands:
   warphelp:
     description: '查看地标帮助'
 
+  showwarp:
+    description: '展示地标点'
+
   tpa:
     description: '发送传送请求'
 
@@ -72,11 +75,11 @@ commands:
     description: '返回上一位置'
     permission: 'wlkits.command.back'
 
-  recipeadder:
+  recipemanager:
     aliases:
-      - 'ra'
+      - 'rm'
     description: '配方管理'
-    permission: 'wlkits.command.recipeadder'
+    permission: 'wlkits.command.recipemanager'
 
   mineboard:
     aliases:
@@ -104,6 +107,9 @@ commands:
       - 'hh'
     description: '家帮助'
 
+  motd:
+    description: '设置 Motd'
+
 
 # -------------------------------------
 
@@ -123,8 +129,9 @@ permissions:
       - wlkits.command.skipnight
       - wlkits.command.wlkits
       - wlkits.command.back
-      - wlkits.command.recipeadder
+      - wlkits.command.recipemanager
       - wlkits.command.mineboard
+      - wlkits.command.motd
 
   wlkits.command.anticreeper:
     default: op
@@ -141,8 +148,11 @@ permissions:
   wlkits.command.mineboard:
     default: op
 
-  wlkits.command.recipeadder:
+  wlkits.command.recipemanager:
     default: op
 
   wlkits.command.wlkits:
+    default: op
+
+  wlkits.command.motd:
     default: op

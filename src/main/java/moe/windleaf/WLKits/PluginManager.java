@@ -1,19 +1,7 @@
 package moe.windleaf.WLKits;
 
-import moe.windleaf.WLKits.Plugins.AntiCreeper.AntiCreeper;
-import moe.windleaf.WLKits.Plugins.Disenchant.Disenchant;
-import moe.windleaf.WLKits.Plugins.JoinInfo.JoinInfo;
-import moe.windleaf.WLKits.Plugins.BackDeath.BackDeath;
-import moe.windleaf.WLKits.Plugins.MineBoard.MineBoard;
-import moe.windleaf.WLKits.Plugins.PlayerTag.PlayerTag;
-import moe.windleaf.WLKits.Plugins.RecipeAdder.RecipeAdder;
-import moe.windleaf.WLKits.Plugins.SimpleBack.SimpleBack;
-import moe.windleaf.WLKits.Plugins.SimpleHome.SimpleHome;
-import moe.windleaf.WLKits.Plugins.SimpleTpa.SimpleTpa;
-import moe.windleaf.WLKits.Plugins.SimpleWarp.SimpleWarp;
-import moe.windleaf.WLKits.Plugins.SkipNight.SkipNight;
-import moe.windleaf.WLKits.Plugins.Suicide.Suicide;
-
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class PluginManager {
@@ -30,10 +18,11 @@ public class PluginManager {
         plugins.add("SimpleWarp");
         plugins.add("SimpleTpa");
         plugins.add("SimpleBack");
-        plugins.add("RecipeAdder");
         plugins.add("MineBoard");
         plugins.add("SimpleHome");
         plugins.add("Disenchant");
+        plugins.add("SimpleMotd");
+        plugins.add("WebSocket");
         return plugins;
     }
 
@@ -42,22 +31,27 @@ public class PluginManager {
         plugins.add("AntiCreeper");
         plugins.add("SkipNight");
         plugins.add("Disenchant");
+        plugins.add("SimpleMotd");
         return plugins;
     }
 
+    @SuppressWarnings("all")
     public void load() {
-        AntiCreeper.load();
-        JoinInfo.load();
-        BackDeath.load();
-        PlayerTag.load();
-        SkipNight.load();
-        Suicide.load();
-        SimpleWarp.load();
-        SimpleTpa.load();
-        SimpleBack.load();
-        RecipeAdder.load();
-        MineBoard.load();
-        SimpleHome.load();
-        Disenchant.load();
+        for (String pl : getPlugins()) {
+            try {
+                String name = "moe.windleaf.WLKits.Plugins." + pl + "." + pl;
+                Utils.logInfoPrefix("&f加载子插件 &3" + pl + "&f...");
+                Class<?> clazz = Class.forName(name);
+                Object object = clazz.newInstance();
+                Method method = object.getClass().getDeclaredMethod("load");
+                method.invoke(object);
+            } catch (ClassNotFoundException |
+                    InstantiationException |
+                    IllegalAccessException |
+                    NoSuchMethodException |
+                    InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

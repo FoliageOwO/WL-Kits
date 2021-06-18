@@ -98,10 +98,11 @@ public class wlkits implements CommandExecutor, TabCompleter {
                             case "check":
                                 if (hasPlugin(args[1])) {
                                     if (isMPlugin(args[1])) {
-                                        if (pluginsStatus.get(args[1]) != null) {
-                                            if (pluginsStatus.get(args[1])) { Utils.sendPrefix(sender, String.format("&a子插件 &6%s &a为开启状态!", args[1]));
-                                            } else { Utils.sendPrefix(sender, String.format("&c子插件 &6%s &a为关闭状态!", args[1])); }
-                                        } else { Utils.sendPrefix(sender, String.format("&a子插件 &6%s &a为开启状态!", args[1])); }
+                                        if (pluginsStatus.get(args[1]) == null) {
+                                            pluginsStatus.put(args[1], Main.config().getBoolean("enable-" + args[1].toLowerCase()));
+                                            Utils.saveHashMap(pluginsStatus, path);
+                                        }
+                                        g(args, sender);
                                     } else {
                                         cannotManage(sender, args[1]);
                                         break;
@@ -120,6 +121,12 @@ public class wlkits implements CommandExecutor, TabCompleter {
             }
             return true;
         }
+    }
+
+    private static void g(String[] args, CommandSender sender) {
+        if (pluginsStatus.get(args[1])) { Utils.sendPrefix(sender, String.format("&a子插件 &6%s &a为开启状态!", args[1]));
+        } else { Utils.sendPrefix(sender, String.format("&c子插件 &6%s &a为关闭状态!", args[1])); }
+
     }
 
     private static boolean isMPlugin(String name) { return PluginManager.getMPlugins().contains(name); }

@@ -49,8 +49,8 @@ public class setwarp implements CommandExecutor, TabCompleter {
                         try {
                             SimpleWarp.warpManager.warps.save(SimpleWarp.warpManager.file);
                             Utils.smartSendPrefix(sender, Utils.insert(m.get("创建成功"), i), "SimpleWarp");
-                            Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("SimpleWarp") + String.format("&a玩家 &6%s &a新建了一个地标点: &9%s&a,", sender.getName(), args[0]));
-                            Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("SimpleWarp") + String.format("&a使用 &6/warp %s &a传送到该地标点.", args[0]));
+                            Utils.broadcastPlayers(Utils.getPluginPrefix("SimpleWarp") + String.format("&a玩家 &6%s &a新建了一个地标点: &9%s&a,", sender.getName(), args[0]));
+                            Utils.broadcastPlayers(Utils.getPluginPrefix("SimpleWarp") + String.format("&a使用 &6/warp %s &a传送到该地标点.", args[0]));
                             return true;
                         } catch (IOException e) {
                             if (sender.isOp()) {

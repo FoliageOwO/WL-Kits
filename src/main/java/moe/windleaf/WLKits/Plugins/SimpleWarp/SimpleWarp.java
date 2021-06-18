@@ -15,5 +15,6 @@ public class SimpleWarp {
         Utils.commandRegister("warps", new warps());
         Utils.commandRegister("warp", new warp());
         Utils.commandRegister("warphelp", new warphelp());
+        Utils.commandRegister("showwarp", new showwarp());
     }
 }

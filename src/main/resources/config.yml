@@ -2,3 +2,7 @@ enable-anticreeper: true
 enable-skipnight: true
 enable-mineboard: true
 enable-disenchant: true
+enable-simplemotd: false
+enable-websocket: false
+
+websocket-port: 8088

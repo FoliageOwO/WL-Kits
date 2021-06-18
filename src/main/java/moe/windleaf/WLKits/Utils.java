@@ -47,12 +47,6 @@ public class Utils {
         }
     }
 
-    public static void broadcastPlayersPrefix(String string) {
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            sendPrefix(player, string);
-        }
-    }
-
     public static void doNotHavePermission(CommandSender sender) { sendPrefix(sender, m.get("没有权限")); }
 
     @SuppressWarnings("unused")
@@ -114,7 +108,7 @@ public class Utils {
 
     private static void _sendHelp(CommandSender sender, Map<String, String> helps) {
         // hyphen(sender);
-        for (String i : helps.keySet()) { Utils.send(sender, String.format("&8» &6%s &f: &a%s"
+        for (String i : helps.keySet()) { Utils.send(sender, String.format("&8» &6%s &f- &a%s"
                 , i, helps.get(i)).replace("|", "&2|&6")); }
     }
 
@@ -214,5 +208,18 @@ public class Utils {
             a = a.replace("{" + i + "}", insertMap.get(i));
         }
         return a;
+    }
+
+    public static String getRandomString(int length) {
+        String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < length; ++i) {
+            int number = random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
+
+        return sb.toString();
     }
 }

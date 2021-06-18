@@ -16,6 +16,7 @@ public class warphelp implements CommandExecutor {
         helps.put("/setwarp [name]", "设置地标点");
         helps.put("/delwarp [name]", "删除地标点");
         helps.put("/warp [name]", "传送至地标点");
+        helps.put("/showwarp [name]", "向其他玩家展示地标点");
         Utils.sendHelp(sender, helps);
         return true;
     }

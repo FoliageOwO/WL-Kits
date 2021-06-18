@@ -6,7 +6,7 @@
 
     <groupId>moe.windleaf</groupId>
     <artifactId>WL-Kits</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.5-pre1</version>
     <packaging>jar</packaging>
 
     <name>WL-Kits</name>
@@ -73,6 +73,11 @@
             <artifactId>spigot-api</artifactId>
             <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>1.5.1</version>
         </dependency>
     </dependencies>
 </project>

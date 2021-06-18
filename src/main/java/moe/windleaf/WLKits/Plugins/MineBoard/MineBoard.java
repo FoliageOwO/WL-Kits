@@ -20,7 +20,6 @@ public class MineBoard {
     public static Objective objective;
 
     public static void load() {
-        Utils.makeDir(Main.prefixPath + "MineBoard");
         if (Main.config().getBoolean("enable-mineboard")) { register(); }
         Utils.eventRegister(new Events());
         Utils.commandRegister("mineboard", new mineboard());

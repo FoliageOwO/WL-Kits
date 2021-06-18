@@ -67,7 +67,7 @@ public class Events implements Listener {
             }
 
             for (Player p : Bukkit.getOnlinePlayers()) {
-                Score hy = MineBoard.objective.getScore(Utils.formatColor("&6------------------"));
+                /*Score hy = MineBoard.objective.getScore(Utils.formatColor("&6------------------"));
                 hy.setScore(-1);
                 Score info = MineBoard.objective.getScore(
                         Utils.formatColor(String.format(
@@ -76,7 +76,7 @@ public class Events implements Listener {
                 Score pm = MineBoard.objective.getScore(
                         Utils.formatColor(
                                 String.format("&a当前排名: &b%s", getIndex(p.getName())+1)));
-                pm.setScore(-3);
+                pm.setScore(-3);*/
                 p.setScoreboard(MineBoard.scoreboard);
             }
             Utils.saveHashMap(MineBoard.scores, MineBoard.path);

@@ -29,7 +29,7 @@ public class delwarp implements CommandExecutor, TabCompleter {
             if (SimpleWarp.warpManager.warps.getKeys(false).contains(args[0])) {
                 SimpleWarp.warpManager.warps.set(args[0], null);
                 Utils.smartSendPrefix(sender, Utils.insert(m.get("删除"), i), "SimpleWarp");
-                Utils.broadcastPlayersPrefix(Utils.getPluginPrefix("SimpleWarp") + Utils.insert(m.get("广播"), i));
+                Utils.broadcastPlayers(Utils.getPluginPrefix("SimpleWarp") + Utils.insert(m.get("广播"), i));
             } else {
                 Utils.smartSendPrefix(sender, Utils.insert(m.get("不存在"), i), "SimpleWarp");
             }

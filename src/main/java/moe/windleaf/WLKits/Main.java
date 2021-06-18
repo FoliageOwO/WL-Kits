@@ -1,14 +1,11 @@
 package moe.windleaf.WLKits;
 
 import moe.windleaf.WLKits.Commands.wlkits;
-import moe.windleaf.WLKits.Plugins.RecipeAdder.RecipeAdder;
-import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
+import moe.windleaf.WLKits.Plugins.WebSocket.WebSocket;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Map;
 
 /*
@@ -38,7 +35,7 @@ public final class Main extends JavaPlugin {
         // 相关初始化
         I = this;
         long startTime = System.currentTimeMillis();
-        version = "0.0.5";
+        version = "0.0.5-pre1";
 
         // 显示 WL-Kits 相关的信息
 
@@ -50,19 +47,16 @@ public final class Main extends JavaPlugin {
         // 配置文件
         smartSaveResource("config.yml");
         smartSaveResource("messages.yml");
+        Main.smartSaveResource("motd.yml");
         configYml = new YmlConfig(prefixPath + "config.yml");
         messages = new YmlConfig(prefixPath + "messages.yml").ob;
 
-        // pluginManager 初始化
+        // pluginManager 初始化 & 加载子插件
         PluginManager pluginManager = new PluginManager();
         pluginManager.load();
 
         // wlkits 命令初始化
         wlkits.load();
-
-        // 依次加载子插件
-        ArrayList<String> plugins = PluginManager.getPlugins();
-        for (String i : plugins) { Utils.logInfoPrefix("&f加载子插件 &3" + i + "&f..."); }
 
         // 注册 wlkits 命令
         Utils.commandRegister("wlkits", new wlkits());
@@ -76,8 +70,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        for (String i : RecipeAdder.recipeManager.loadedRecipes.keySet()) { Bukkit.removeRecipe(new NamespacedKey(this, i)); }
-        Bukkit.removeRecipe(new NamespacedKey(this, "disenchantmentbook"));
+        WebSocket.unload();
         Utils.logInfo("&f已卸载!");
     }
 
