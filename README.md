@@ -1,7 +1,7 @@
 # WL-Kits
 [![使用 Spigot-API](https://img.shields.io/badge/使用-Spigot%20API-green)](https://hub.spigotmc.org/javadocs/bukkit/)
 [![使用 Maven](https://img.shields.io/badge/使用-Maven-blue)](https://hub.spigotmc.org/javadocs/bukkit/)
-![当前版本](https://img.shields.io/badge/当前版本-0.0.5-orange)
+![当前版本](https://img.shields.io/badge/当前版本-0.0.5%20pre1-orange)
 [![使用 IDE](https://img.shields.io/badge/使用%20IDE-JetBrains%20IntelliJ%20IDEA-red)](https://www.jetbrains.com/idea/)
 ![完成进度](https://img.shields.io/badge/完成进度-25%25-red)
 
