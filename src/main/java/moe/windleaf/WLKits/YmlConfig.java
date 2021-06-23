@@ -18,7 +18,7 @@ public class YmlConfig {
     public YmlConfig(String path) {
         try {
             file = new File(path);
-            if (!file.exists()) { Utils.makeFile(path); }
+            if (!file.exists()) { Util.makeFile(path); }
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
             Yaml yaml = new Yaml();
             ob = yaml.load(br);

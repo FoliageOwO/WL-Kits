@@ -6,7 +6,7 @@
 
     <groupId>moe.windleaf</groupId>
     <artifactId>WL-Kits</artifactId>
-    <version>0.0.5-pre1</version>
+    <version>0.0.5-pre2</version>
     <packaging>jar</packaging>
 
     <name>WL-Kits</name>

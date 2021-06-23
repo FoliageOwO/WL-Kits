@@ -39,8 +39,8 @@ public class PluginManager {
     public void load() {
         for (String pl : getPlugins()) {
             try {
-                String name = "moe.windleaf.WLKits.Plugins." + pl + "." + pl;
-                Utils.logInfoPrefix("&f加载子插件 &3" + pl + "&f...");
+                String name = "moe.windleaf.WLKits.plugins." + pl + "." + pl;
+                Util.logInfoPrefix("&f加载子插件 &3" + pl + "&f...");
                 Class<?> clazz = Class.forName(name);
                 Object object = clazz.newInstance();
                 Method method = object.getClass().getDeclaredMethod("load");

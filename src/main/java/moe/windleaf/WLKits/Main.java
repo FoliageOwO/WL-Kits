@@ -1,7 +1,6 @@
 package moe.windleaf.WLKits;
 
-import moe.windleaf.WLKits.Commands.wlkits;
-import moe.windleaf.WLKits.Plugins.WebSocket.WebSocket;
+import moe.windleaf.WLKits.plugins.WebSocket.WebSocket;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,9 +23,9 @@ public final class Main extends JavaPlugin {
     public static String version;
     public SLogger logger = new SLogger("WL-Kits");
     public String name = "WL-Kits";
-    public String prefix = Utils.getPrefix(name);
+    public String prefix = Util.getPrefix(name);
     public org.bukkit.plugin.PluginManager pluginManager = getServer().getPluginManager();
-    public static String prefixPath = Utils.getPath() + "plugins" + File.separator + "WL-Kits" + File.separator;
+    public static String prefixPath = Util.getPath() + "plugins" + File.separator + "WL-Kits" + File.separator;
     public static Map<String, Object> messages;
     public static YmlConfig configYml;
 
@@ -35,14 +34,13 @@ public final class Main extends JavaPlugin {
         // 相关初始化
         I = this;
         long startTime = System.currentTimeMillis();
-        version = "0.0.5-pre1";
+        version = "0.0.5-pre2";
 
         // 显示 WL-Kits 相关的信息
-
-        Utils.logInfo("&f-------------------------------------------------------");
-        Utils.logInfo(String.format("&f   &aWL-Kits &3[moe.windleaf.WLKits] &9version: %s", version));
-        Utils.logInfo("&f      &1by: WindLeaf  &b<www.github.com/WindLeaf233>");
-        Utils.logInfo("&f-------------------------------------------------------");
+        Util.logInfo("&f-------------------------------------------------------");
+        Util.logInfo(String.format("&f   &aWL-Kits &3[moe.windleaf.WLKits] &9version: %s", version));
+        Util.logInfo("&f      &1by: WindLeaf  &b<www.github.com/WindLeaf233>");
+        Util.logInfo("&f-------------------------------------------------------");
 
         // 配置文件
         smartSaveResource("config.yml");
@@ -57,21 +55,19 @@ public final class Main extends JavaPlugin {
 
         // wlkits 命令初始化
         wlkits.load();
-
-        // 注册 wlkits 命令
-        Utils.commandRegister("wlkits", new wlkits());
+        Util.commandRegister("wlkits", new wlkits());
 
         // 记录加载完成时的时间
         long endTime = System.currentTimeMillis();
 
         // 显示加载完成
-        Utils.logInfoPrefix("&f加载完成, 用时 &e" + (endTime - startTime) + "ms&f!");
+        Util.logInfoPrefix("&f加载完成, 用时 &e" + (endTime - startTime) + "ms&f!");
     }
 
     @Override
     public void onDisable() {
         WebSocket.unload();
-        Utils.logInfo("&f已卸载!");
+        Util.logInfo("&f已卸载!");
     }
 
     public static FileConfiguration config() {
